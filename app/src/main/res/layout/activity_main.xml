@@ -10,10 +10,12 @@
     tools:context="com.example.joans.timetracker.MainActivity">
 
     <Button
+        android:id="@+id/buttonStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start"
-        android:id="@+id/buttonStart"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="53dp"
+        android:layout_marginStart="277dp"
+        android:text="Start" />
 </RelativeLayout>

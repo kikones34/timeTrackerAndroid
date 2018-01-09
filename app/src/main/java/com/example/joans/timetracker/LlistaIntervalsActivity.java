@@ -148,8 +148,7 @@ public class LlistaIntervalsActivity extends AppCompatActivity {
             Log.d(tag, "onReceive Receptor LlistaIntervals");
             if (intent.getAction().equals(GestorArbreActivitats.TE_FILLS)) {
                 ArrayList<DadesInterval> llistaDadesInter =
-                        (ArrayList<DadesInterval>) intent
-                                .getSerializableExtra("llista_dades_intervals");
+                        (ArrayList<DadesInterval>) intent.getSerializableExtra("llista_dades_intervals");
                 aaAct.clear();
                 for (DadesInterval dadesInter : llistaDadesInter) {
                     aaAct.add(dadesInter);

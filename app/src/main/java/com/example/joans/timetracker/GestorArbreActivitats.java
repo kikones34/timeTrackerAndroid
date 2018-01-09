@@ -309,7 +309,6 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         filter.addAction(LlistaIntervalsActivity.PUJA_NIVELL);
         receptor = new Receptor();
         registerReceiver(receptor, filter);
-
         actualitzadorIU = new Actualitzador(this, periodeRefrescIU,
                 "gestor_arbre_activitats");
         // Escollir la opció desitjada d'entre ferArbreGran, llegirArbreArxiu i
@@ -429,8 +428,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
             if ((accio.equals(LlistaActivitatsActivity.ENGEGA_CRONOMETRE))
                  || (accio.equals(LlistaActivitatsActivity.PARA_CRONOMETRE))) {
                 int posicio = intent.getIntExtra("posicio", -1);
-                Tasca tascaClicada = (Tasca) ((Projecte) activitatPareActual)
-                        .getActivitats().toArray()[posicio];
+                Tasca tascaClicada = (Tasca) ((Projecte) activitatPareActual).getActivitats().toArray()[posicio];
                 if (accio.equals(LlistaActivitatsActivity.ENGEGA_CRONOMETRE)) {
                     if (!tascaClicada.isCronometreEngegat()) {
                         // rellotge.engega();
