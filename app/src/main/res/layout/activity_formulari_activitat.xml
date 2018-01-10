@@ -1,157 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:scrollbars="vertical"
     android:focusable="true"
     android:focusableInTouchMode="true">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="383dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="0dp">
 
-    <TextView android:id="@+id/formulari_textview1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/formulari_tipus_dactivitat"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        <TextView
+            android:id="@+id/formulari_textview1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formulari_tipus_dactivitat"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <Spinner
-        android:id="@+id/formulari_spr_tipus_activitat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:prompt="@string/formulari_seleccio_tipus_dactivitat"
-        android:layout_weight=".40"
-        android:entries="@array/formulari_tipus_activitat"
-        android:visibility="visible">
-    </Spinner>
+        <Spinner
+            android:id="@+id/formulari_spr_tipus_activitat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".40"
+            android:entries="@array/formulari_tipus_activitat"
+            android:prompt="@string/formulari_seleccio_tipus_dactivitat"
+            android:visibility="visible">
+        </Spinner>
 
-    <CheckBox
-        android:id="@+id/formulari_check_AutoStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
-    <TextView
-        android:id="@+id/formulari_check_AutoStart_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/formulari_check_autoStart"
-        android:visibility="gone"/>
-    <TextView
-        android:id="@+id/formulari_time_autoStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-    </TextView>
+        <TextView
+            android:id="@+id/formulari_check_AutoStart_tv"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:text="@string/formulari_check_autoStart"
+            android:visibility="visible" />
 
-    <CheckBox
-        android:id="@+id/formulari_check_AutoEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"/>
-    <TextView
-        android:id="@+id/formulari_check_AutoEnd_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/formulari_check_autoEnd"
-        android:visibility="gone"/>
+        <CheckBox
+            android:id="@+id/formulari_check_AutoStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
 
-    <EditText
-        android:id="@+id/formulari_time_autoEnd_hour"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/default_value_time"
-        android:visibility="gone">
-    </EditText>
-    <TextView
-        android:id="@+id/autoEnd_h"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hour"
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/formulari_time_autoStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"></TextView>
 
-    <EditText
-        android:id="@+id/formulari_time_autoEnd_min"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/default_value_time"
-        android:visibility="gone">
-    </EditText>
-    <TextView
-        android:id="@+id/autoEnd_m"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/min"
-        android:visibility="gone"/>
+        <CheckBox
+            android:id="@+id/formulari_check_AutoEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible" />
 
-    <EditText
-        android:id="@+id/formulari_time_autoEnd_sec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/default_value_time"
-        android:visibility="gone">
-    </EditText>
-    <TextView
-        android:id="@+id/autoEnd_s"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/sec"
-        android:visibility="gone"/>
+        <TextView
+            android:id="@+id/formulari_check_AutoEnd_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formulari_check_autoEnd"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/formulari_time_autoEnd_hour"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_value_time"
+            android:visibility="visible"></EditText>
+
+        <TextView
+            android:id="@+id/autoEnd_h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hour"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/formulari_time_autoEnd_min"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_value_time"
+            android:visibility="visible"></EditText>
+
+        <TextView
+            android:id="@+id/autoEnd_m"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/min"
+            android:visibility="visible" />
+
+        <EditText
+            android:id="@+id/formulari_time_autoEnd_sec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/default_value_time"
+            android:visibility="visible">
+        </EditText>
+
+        <TextView
+            android:id="@+id/autoEnd_s"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sec"
+            android:visibility="visible" />
 
 
-    <TextView android:id="@+id/formulari_textview2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/formulari_nom_activitat"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:visibility="visible"/>
+        <TextView
+            android:id="@+id/formulari_textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formulari_nom_activitat"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="visible" />
 
-    <EditText android:id="@+id/formulari_nom_activitat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/formulari_nom_activitat_hint"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:visibility="visible"
-        android:inputType="textNoSuggestions"
-        android:imeOptions="actionNext"
-        android:nextFocusForward="@+id/formulari_descripcio"/>
+        <EditText
+            android:id="@+id/formulari_nom_activitat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/formulari_nom_activitat_hint"
+            android:imeOptions="actionNext"
+            android:inputType="textNoSuggestions"
+            android:nextFocusForward="@+id/formulari_descripcio"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="visible" />
 
-    <TextView android:id="@+id/formulari_textview3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/formulari_descripcio"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:visibility="visible"/>
+        <TextView
+            android:id="@+id/formulari_textview3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/formulari_descripcio"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:visibility="visible" />
 
-    <EditText android:id="@+id/formulari_descripcio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="@string/formulari_descripcio_hint"
-        android:inputType="textMultiLine"
-        android:lines="3"
-        android:visibility="visible"/>
+        <EditText
+            android:id="@+id/formulari_descripcio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/formulari_descripcio_hint"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:visibility="visible" />
 
-    <Button
-        android:id="@+id/formulari_btn_crear"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".50"
-        android:backgroundTint="@android:color/holo_green_light"
-        android:text="@string/formulari_boto_crear"
-        android:visibility="visible" />
+        <Button
+            android:id="@+id/formulari_btn_crear"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:backgroundTint="@android:color/holo_green_light"
+            android:text="@string/formulari_boto_crear"
+            android:visibility="visible" />
 
-    <Button
-        android:id="@+id/formulari_btn_tornar"
-        style="@style/Widget.AppCompat.Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight=".50"
-        android:backgroundTint="@android:color/holo_red_light"
-        android:text="@string/formulari_boto_tornar_enrere"
-        android:visibility="visible" />
+        <Button
+            android:id="@+id/formulari_btn_tornar"
+            style="@style/Widget.AppCompat.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:backgroundTint="@android:color/holo_red_light"
+            android:text="@string/formulari_boto_tornar_enrere"
+            android:visibility="visible" />
     </LinearLayout>
-</android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>

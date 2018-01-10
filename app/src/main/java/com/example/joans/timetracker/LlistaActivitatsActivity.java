@@ -1,7 +1,9 @@
 package com.example.joans.timetracker;
 
+import android.app.DialogFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -95,6 +97,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      */
     private List<packDadesActivitatPosition> llistaDadesProjectes;
     private ArrayList<packDadesActivitatPosition> llistaDadesTasques;
+
     /**
      * Identificador del View les propietats del qual (establertes amb l'editor
      * XML de la interfase gràfica) estableixen com es mostra cada un els items
@@ -354,6 +357,31 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                     // no pot ser!
                     assert false : "activitat que no es projecte ni tasca";
                 }
+            }
+        });
+
+        listViewProjectes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(final AdapterView<?> arg0,
+                                           final View arg1, final int pos, final long id) {
+                Log.i(tag, "onItemLongClick");
+                Log.d(tag, "pos = " + pos + ", id = " + id);
+
+                mesInformacioDialogFragment info = new mesInformacioDialogFragment();
+
+                Bundle args = new Bundle();
+                args.putString("nom", llistaDadesProjectes.get(pos).getDades().getNom());
+                args.putString("descripcio",llistaDadesProjectes.get(pos)
+                        .getDades().getDescripcio());
+                info.setArguments(args);
+                info.show(getFragmentManager(), "Més detalls");
+                info.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialogInterface) {
+
+                    }
+                });
+                return true;
             }
         });
 
