@@ -23,6 +23,10 @@
             android:name=".LlistaIntervalsActivity">
         </activity>
 
+        <activity
+            android:name=".FormulariCrearActivitatActivity">
+        </activity>
+
         <service
             android:name="GestorArbreActivitats"
             android:enabled="true" >

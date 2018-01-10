@@ -237,6 +237,8 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      */
     public static final String PUJA_NIVELL = "Puja_nivell";
 
+    public static final String CREAR_ACTIVITAT = "Crear_activitat";
+
     /**
      * En voler pujar de nivell quan ja som a dalt de tot vol dir que l'usuari
      * desitja "deixar de treballar del tot" amb la aplicació, així que "parem"
@@ -379,7 +381,9 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(LlistaActivitatsActivity.this,
+                        FormulariCrearActivitatActivity.class));
+                sendBroadcast(new Intent(LlistaActivitatsActivity.DONAM_FILLS));
             }
         });
 

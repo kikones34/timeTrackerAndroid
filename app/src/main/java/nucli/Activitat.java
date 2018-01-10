@@ -50,11 +50,19 @@ public abstract class Activitat implements Serializable {
 	}
 
 	public Date getDataInicial() {
-		return getPeriode().getDataInicial();
+		if (getPeriode() == null) {
+			return null;
+		} else {
+			return getPeriode().getDataInicial();
+		}
 	}
 
 	public Date getDataFinal() {
-		return getPeriode().getDataFinal();
+		if (getPeriode() == null) {
+			return null;
+		} else {
+			return getPeriode().getDataFinal();
+		}
 	}
 
 	public long getDurada() {

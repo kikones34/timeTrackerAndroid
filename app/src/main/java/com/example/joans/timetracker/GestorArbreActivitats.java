@@ -307,6 +307,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         filter.addAction(LlistaActivitatsActivity.DESA_ARBRE);
         filter.addAction(LlistaActivitatsActivity.PARA_SERVEI);
         filter.addAction(LlistaIntervalsActivity.PUJA_NIVELL);
+        filter.addAction(LlistaActivitatsActivity.CREAR_ACTIVITAT);
         receptor = new Receptor();
         registerReceiver(receptor, filter);
         actualitzadorIU = new Actualitzador(this, periodeRefrescIU,
@@ -314,7 +315,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         // Escollir la opció desitjada d'entre ferArbreGran, llegirArbreArxiu i
         // ferArbrePetitBuit. Podríem primer fer l'arbre gran i després, quan
         // ja s'hagi desat, escollir la opció de llegir d'arxiu.
-        final int opcio = ferArbreGran;
+        final int opcio = llegirArbreArxiu; //ferArbreGran, llegirArbreArxiu, ferArbrePetit
         carregaArbreActivitats(opcio);
         activitatPareActual = arrel;
 
@@ -490,6 +491,12 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
                 activitatPareActual = activitatClicada;
             } else if (accio.equals(LlistaActivitatsActivity.PARA_SERVEI)) {
                 paraServei();
+            } else if (accio.equals(LlistaActivitatsActivity.CREAR_ACTIVITAT)) {
+                String nom = intent.getStringExtra("nom");
+                String descripcio = intent.getStringExtra("descripcio");
+                String tipus = intent.getStringExtra("tipus");
+
+                crearActivitat(nom, descripcio, tipus.contains("Projecte"));
             } else {
                 Log.d(tag, "accio desconeguda!");
             }
@@ -528,6 +535,15 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         sendBroadcast(resposta);
         Log.d(tag, "enviat intent TE_FILLS d'activitat "
                 + activitatPareActual.getClass().getName());
+    }
+    //el String tipus es comparat amb el string "Projecte", si s'ha sel·leccionat projecte,
+    //tipus = true.
+    private void crearActivitat(String nom, String descripcio, boolean tipus) {
+        if(tipus) { //creació d'un projecte
+            Projecte act = new Projecte(nom, descripcio,(Projecte) activitatPareActual);
+        } else {
+            Tasca act = new Tasca(nom, descripcio,(Projecte) activitatPareActual);
+        }
     }
 
     /**

@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">TimeTracker</string>
     <string name="tasca_button">Play</string>
+    <string name="formulari_nom_activitat">Nom:</string>
+    <string name="formulari_nom_activitat_hint">Nom de l\'activitat:&#8230;</string>
+    <string name="formulari_tipus_dactivitat">Tipus d\'activitat:</string>
+    <string name="formulari_seleccio_tipus_dactivitat">Selecciona el tipus d\'activitat:</string>
+    <string name="formulari_descripcio">Descripció:</string>
+    <string name="formulari_descripcio_hint">Descripció de l\'activitat&#8230;</string> // &#8230; = ...
+    <string name="formulari_boto_crear">Crear</string>
+    <string name="formulari_opcio_projecte">Projecte</string>
+    <string name="formulari_opcio_tasca">Tasca</string>
+    <string name="formulari_boto_tornar_enrere">Cancel·lar</string>
+    <string name="formulari_check_autoStart">Arrencada automàtica</string>
+    <string name="formulari_check_autoEnd">Parada automàtica</string>
+    <string name="default_value_time">0</string>
+    <string name="hour">h</string>
+    <string name="min">m</string>
+    <string name="sec">s</string>
 </resources>
