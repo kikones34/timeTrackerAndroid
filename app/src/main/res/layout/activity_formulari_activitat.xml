@@ -24,20 +24,25 @@
             android:text="@string/formulari_tipus_dactivitat"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-        <Spinner
-            android:id="@+id/formulari_spr_tipus_activitat"
-            android:layout_width="wrap_content"
+        <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/radio_projecte_tasca"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_weight=".40"
-            android:entries="@array/formulari_tipus_activitat"
-            android:prompt="@string/formulari_seleccio_tipus_dactivitat"
-            android:layout_marginTop="5dp"
-            android:visibility="visible">
-        </Spinner>
+            android:layout_marginStart="24dp"
+            android:orientation="horizontal">
+            <RadioButton android:id="@+id/radio_projecte"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/formulari_opcio_projecte"/>
+            <RadioButton android:id="@+id/radio_tasca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/formulari_opcio_tasca"/>
+        </RadioGroup>
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/formulari_constraintLayout"
+            android:id="@+id/formulari_decorators"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="visible">
@@ -54,7 +59,7 @@
 
             <TextView
                 android:id="@+id/formulari_check_AutoStart_tv"
-                android:layout_width="152dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
@@ -66,7 +71,7 @@
             <LinearLayout
                 android:id="@+id/automatic_start_desc"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:orientation="horizontal"
                 android:visibility="visible"
@@ -74,12 +79,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/formulari_check_AutoStart">
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/start_time_button_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:visibility="visible"
-                    tools:text="@string/auto_start_desc"></TextView>
+                    android:text="@string/auto_start_desc"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:visibility="visible"></TextView>
 
                 <Button
                     android:id="@+id/start_time_button"
@@ -90,6 +96,7 @@
                     android:minWidth="0dp"
                     android:text="..."
                     android:textAppearance="@android:style/TextAppearance.Material.Small" />
+
             </LinearLayout>
 
             <CheckBox
@@ -106,7 +113,7 @@
             <TextView
                 android:id="@+id/formulari_check_AutoEnd_tv"
                 android:layout_width="wrap_content"
-                android:layout_height="15dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="14dp"
                 android:text="@string/formulari_check_autoEnd"
@@ -117,7 +124,7 @@
             <LinearLayout
                 android:id="@+id/automatic_stop_desc"
                 android:layout_width="wrap_content"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:orientation="horizontal"
                 android:visibility="visible"
@@ -125,12 +132,13 @@
                 app:layout_constraintTop_toBottomOf="@+id/formulari_check_AutoEnd">
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/end_time_button_text"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:visibility="visible"
-                    tools:text="@string/auto_end_desc"></TextView>
+                    android:text="@string/auto_end_desc"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:visibility="visible"></TextView>
 
                 <Button
                     android:id="@+id/end_time_button"

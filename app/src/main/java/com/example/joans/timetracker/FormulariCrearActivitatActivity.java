@@ -3,6 +3,7 @@ package com.example.joans.timetracker;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextClock;
 import android.widget.TextView;
@@ -35,9 +38,16 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
 
         Button crear = findViewById(R.id.formulari_btn_crear);
         Button tornar = findViewById(R.id.formulari_btn_tornar);
-        Spinner spr = findViewById(R.id.formulari_spr_tipus_activitat);
         CheckBox cbAutoStart = findViewById(R.id.formulari_check_AutoStart);
         CheckBox cbAutoEnd = findViewById(R.id.formulari_check_AutoEnd);
+
+        final ConstraintLayout decorators = findViewById(R.id.formulari_decorators);
+        final LinearLayout auto_start_decorator = findViewById(R.id.automatic_start_desc);
+        final LinearLayout auto_end_decorator = findViewById(R.id.automatic_stop_desc);
+
+        decorators.setVisibility(View.GONE);
+        auto_start_decorator.setVisibility(View.GONE);
+        auto_end_decorator.setVisibility(View.GONE);
 
         Button autoStart_btn = findViewById(R.id.start_time_button);
         Button autoEnd_btn = findViewById(R.id.end_time_button);
@@ -46,48 +56,39 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
         tornar.setOnClickListener(btnTornarListener);
         autoStart_btn.setOnClickListener(autoStartBtnListener);
         autoEnd_btn.setOnClickListener(autoEndBtnListener);
-        spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        RadioGroup rg = findViewById(R.id.radio_projecte_tasca);
+        RadioButton radio_projecte = findViewById(R.id.radio_projecte);
+        radio_projecte.setChecked(true);
+
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ConstraintLayout cl = findViewById(R.id.formulari_constraintLayout);
-
-                Spinner spr = findViewById(R.id.formulari_spr_tipus_activitat);
-
-                CheckBox cb1 = findViewById(R.id.formulari_check_AutoStart);
-                CheckBox cb2 = findViewById(R.id.formulari_check_AutoEnd);
-
-                if(spr.getSelectedItem().toString().contains("Tasca")) {
-                    cl.setVisibility(view.VISIBLE);
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                RadioButton rbTasca = findViewById(R.id.radio_tasca);
+                if (rbTasca.isChecked()) {
+                    decorators.setVisibility(View.VISIBLE);
                 } else {
-                    cl.setVisibility(view.GONE);
-                    cb1.setChecked(false);
-                    cb2.setChecked(false);
+                    decorators.setVisibility(View.GONE);
                 }
             }
-
-            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
         cbAutoStart.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-            LinearLayout ll = findViewById(R.id.automatic_start_desc);
             if (isChecked) {
-                DialogFragment newFragment = new TimePickerFragment();
-                newFragment.show(getFragmentManager(),"TimePicker");
-                ll.setVisibility(buttonView.VISIBLE);
+                auto_start_decorator.setVisibility(buttonView.VISIBLE);
             } else {
-                ll.setVisibility(buttonView.GONE);
+                auto_start_decorator.setVisibility(buttonView.GONE);
             }
             }
         });
 
         cbAutoEnd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                LinearLayout ll = findViewById(R.id.automatic_stop_desc);
             if (isChecked) {
-                ll.setVisibility(buttonView.VISIBLE);
+                auto_end_decorator.setVisibility(buttonView.VISIBLE);
             } else {
-                ll.setVisibility(buttonView.GONE);
+                auto_end_decorator.setVisibility(buttonView.GONE);
             }
             }
         });
@@ -107,7 +108,9 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
     private View.OnClickListener autoEndBtnListener = new View.OnClickListener() {
         public void onClick(View v) {
             Bundle args = new Bundle();
-            args.putInt("id", R.id.end_time_button);
+            int a = (R.id.end_time_button);
+            System.out.println(a);
+            args.putInt("id", (R.id.end_time_button));
 
             DialogFragment newFragment = new TimePickerFragment();
             newFragment.setArguments(args);
@@ -121,11 +124,12 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
 
             EditText et_nom = findViewById(R.id.formulari_nom_activitat);
             EditText et_descripcio = findViewById(R.id.formulari_descripcio);
-            Spinner scr_tipus = findViewById(R.id.formulari_spr_tipus_activitat);
+            RadioGroup act_tipus = findViewById(R.id.radio_projecte_tasca);
 
             String nom = et_nom.getText().toString();
             String descripcio = et_descripcio.getText().toString();
-            String tipus = scr_tipus.getSelectedItem().toString();
+            RadioButton selected_radio = findViewById(act_tipus.getCheckedRadioButtonId());
+            String tipus = selected_radio.getText().toString();
 
             if (nom.isEmpty()) {
                 Toast toast = Toast.makeText(FormulariCrearActivitatActivity.this, R.string.nom_buit, Toast.LENGTH_SHORT);

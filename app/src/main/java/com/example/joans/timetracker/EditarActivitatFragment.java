@@ -58,6 +58,13 @@ public class EditarActivitatFragment extends DialogFragment {
             }
         });
 
+        builder.setNegativeButton(R.string.formulari_boto_tornar_enrere, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                dismiss();
+            }
+        });
+
     return builder.create();
 
     }

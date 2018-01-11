@@ -25,6 +25,6 @@
     <string name="OK">Acceptar</string>
     <string name="nom_buit">Nom buit</string>
     <string name="descripcio_buida">Descripció buida</string>
-    <string name="auto_start_desc">La tasca començarà cada dia automàticament a les</string>
-    <string name="auto_end_desc">La tasca es pararà cada dia automàticament a les</string>
+    <string name="auto_start_desc">La tasca començarà cada dia a les</string>
+    <string name="auto_end_desc">La tasca es pararà cada dia a les</string>
 </resources>
