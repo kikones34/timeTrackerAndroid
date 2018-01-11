@@ -195,13 +195,32 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                 inte.putExtra("id", llistaDadesActivities.get(id).getPos());
                 sendBroadcast(inte);
             } else if (intent.getAction().equals(LlistaActivitatsActivity.DEMANAR_EDITAR_ACTIVITAT)) {
+                int id = intent.getIntExtra("id", 0);
+
+                Bundle args = new Bundle();
+                args.putString("nom", llistaDadesActivities.get(id).getDades().getNom());
+                args.putString("descripcio", llistaDadesActivities.get(id).getDades().getDescripcio());
+                args.putInt("id", id);
+
+                EditarActivitatFragment frag = new EditarActivitatFragment();
+
+                frag.setArguments(args);
+                frag.show(getFragmentManager(), "editar_activitat");
 
             } else if (intent.getAction().equals(LlistaActivitatsActivity.ACTIVITAT_EDITAT)) {
-                Bundle extras = intent.getExtras();
-                String nom = extras.getString("nom");
-                String descripcio = extras.getString("descripcio");
+                String nom = intent.getStringExtra("nom");
+                String descripcio = intent.getStringExtra("descripcio");
+                int id = intent.getIntExtra("id", 0);
+
+                System.out.println("nom: " + nom + " descripcio: " + descripcio);
+                System.out.println(id);
 
                 Intent inte = new Intent(LlistaActivitatsActivity.EDITAR_ACTIVITAT);
+                inte.putExtra("nom", nom);
+                inte.putExtra("descripcio", descripcio);
+                inte.putExtra("id", llistaDadesActivities.get(id).getPos());
+
+                sendBroadcast(inte);
 
             } else {
                 // no pot ser
@@ -432,6 +451,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
     public final void onBackPressed() {
         Log.i(tag, "onBackPressed");
         if (activitatPareActualEsArrel) {
+            // TODO: popup cosa
             Log.d(tag, "parem servei");
             sendBroadcast(new Intent(LlistaActivitatsActivity.PARA_SERVEI));
             super.onBackPressed();

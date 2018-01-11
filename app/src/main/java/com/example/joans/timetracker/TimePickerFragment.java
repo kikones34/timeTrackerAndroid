@@ -5,6 +5,7 @@ import android.app.DialogFragment;
 import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
@@ -16,8 +17,11 @@ import java.util.Calendar;
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
 
+    private int id;
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState){
+        super.onCreateDialog(savedInstanceState);
+        id = getArguments().getInt("id");
         //Use the current time as the default values for the time picker
         final Calendar c = Calendar.getInstance();
         int hour = c.get(Calendar.HOUR_OF_DAY);
@@ -31,11 +35,9 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     //onTimeSet() callback method
     public void onTimeSet(TimePicker view, int hourOfDay, int minute){
         //Do something with the user chosen time
-        //Get reference of host activity (XML Layout File) TextView widget
-        TextView tv = (TextView) getActivity().findViewById(R.id.formulari_time_autoStart);
-        //Set a message for user
-        tv.setText("La tasca començarà cada dia a les ");
-        //Display the user changed time on TextView
-        tv.setText(tv.getText() + String.format("%02dh %02dm", hourOfDay, minute) + "\n");
+        //Get reference of host activity (XML Layout File) button widget
+        Button btn = getActivity().findViewById(id);
+        //Display the user changed time on Button
+        btn.setText(String.format("%02dh %02dm", hourOfDay, minute));
     }
 }

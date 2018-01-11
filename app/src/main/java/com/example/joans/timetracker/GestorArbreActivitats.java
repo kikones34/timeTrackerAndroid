@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
 
@@ -21,6 +22,7 @@ import java.util.Collections;
 import java.util.Date;
 
 import nucli.Activitat;
+import nucli.Informacio;
 import nucli.Interval;
 import nucli.Projecte;
 /*
@@ -319,7 +321,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         // Escollir la opció desitjada d'entre ferArbreGran, llegirArbreArxiu i
         // ferArbrePetitBuit. Podríem primer fer l'arbre gran i després, quan
         // ja s'hagi desat, escollir la opció de llegir d'arxiu.
-        final int opcio = ferArbreGran; //ferArbreGran, llegirArbreArxiu, ferArbrePetit
+        final int opcio = llegirArbreArxiu; //ferArbreGran, llegirArbreArxiu, ferArbrePetit
         carregaArbreActivitats(opcio);
         activitatPareActual = arrel;
 
@@ -504,6 +506,17 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
             } else if (accio.equals(LlistaActivitatsActivity.ELIMINAR_ACTIVITAT)) {
                 int id = intent.getIntExtra("id", 0);
                 eliminarActivitat((Activitat) ((Projecte) activitatPareActual).getActivitats().toArray()[id]);
+                enviaFills();
+            } else if (accio.equals(LlistaActivitatsActivity.EDITAR_ACTIVITAT)) {
+                Bundle extras = intent.getExtras();
+                String nom = extras.getString("nom");
+                String descripcio = extras.getString("descripcio");
+                int id = extras.getInt("id");
+
+                System.out.println("Gestor. nom: " + nom + " descripcio: " + descripcio);
+
+                Activitat act = (Activitat) ((Projecte) activitatPareActual).getActivitats().toArray()[id];
+                act.setInfo(new Informacio(nom, descripcio));
                 enviaFills();
             } else {
                 Log.d(tag, "accio desconeguda!");
