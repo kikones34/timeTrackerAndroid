@@ -119,4 +119,24 @@ public class DadesInterval implements Serializable {
     public final long getDurada() {
         return durada;
     }
+
+    public final String getDuradaFormatted() {
+        /**
+         * Factor de conversió
+         */
+        final long segonsPerHora = 3600;
+
+        /**
+         * Factor de conversió
+         */
+        final long segonsPerMinut = 60;
+
+        long hores = (long) (durada / segonsPerHora);
+        long minuts = (long) ((durada - hores * segonsPerHora)
+                / segonsPerMinut);
+        long segons = (long) (durada - segonsPerHora * hores
+                - segonsPerMinut * minuts);
+        // String strdurada = Long.toString(durada);
+        return String.format("%dh %02dm %02ds", hores, minuts, segons);
+    }
 }

@@ -17,9 +17,9 @@ import java.util.ArrayList;
  * Created by ARB on 11/01/2018. asd
  */
 
-public class ActivityAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
+public class ActivitatAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
 
-    public ActivityAdapter(Context context, ArrayList<PackDadesActivitatPosition> data) {
+    public ActivitatAdapter(Context context, ArrayList<PackDadesActivitatPosition> data) {
         super(context, 0, data);
     }
 

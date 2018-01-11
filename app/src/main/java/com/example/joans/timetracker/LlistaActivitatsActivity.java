@@ -11,11 +11,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Collections;
 
 
 /**
@@ -86,7 +85,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      * tingui un mètode <code>toString</code> que retornarà l'string a mostrar
      * en els TextView (controls de text) de la llista ListView.
      */
-    private ActivityAdapter aaAct;
+    private ActivitatAdapter aaAct;
     /**
      * Llista de dades de les activitats (projectes i tasques) mostrades
      * actualment, filles del (sub)projecte on estem posicionats actualment.
@@ -156,9 +155,27 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                 aaAct.clear();
 
                 /* TODO: poner proyectos antes que tasques y ordenarlos de alguna forma */
+                ArrayList<PackDadesActivitatPosition> llistaProjectes = new ArrayList<>();
+                ArrayList<PackDadesActivitatPosition> llistaTasques = new ArrayList<>();
 
                 for (int i = 0; i < llistaDadesAct.size(); i++) {
-                    aaAct.add(new PackDadesActivitatPosition(llistaDadesAct.get(i), i));
+                    DadesActivitat da = llistaDadesAct.get(i);
+
+                    if (da.isProjecte()) {
+                        llistaProjectes.add(new PackDadesActivitatPosition(da, i));
+                    } else {
+                        llistaTasques.add(new PackDadesActivitatPosition(da, i));
+                    }
+                }
+
+                Collections.sort(llistaProjectes, new DadesActivitatComparator());
+                Collections.sort(llistaTasques, new DadesActivitatComparator());
+
+                for (PackDadesActivitatPosition pdap : llistaProjectes) {
+                    aaAct.add(pdap);
+                }
+                for (PackDadesActivitatPosition pdap : llistaTasques) {
+                    aaAct.add(pdap);
                 }
 
                 // això farà redibuixar el ListView
@@ -315,7 +332,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
         fab = (FloatingActionButton) this.findViewById(R.id.addActivity);
 
         llistaDadesActivities = new ArrayList<PackDadesActivitatPosition>();
-        aaAct = new ActivityAdapter(this, llistaDadesActivities);
+        aaAct = new ActivitatAdapter(this, llistaDadesActivities);
 
         listViewActivities.setAdapter(aaAct);
 

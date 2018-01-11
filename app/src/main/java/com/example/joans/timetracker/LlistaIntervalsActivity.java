@@ -52,17 +52,7 @@ public class LlistaIntervalsActivity extends AppCompatActivity {
      * retornarà l'string a mostrar en els <code>TextView</code> (controls de
      * text) de la llista <code>ListView</code>.
      */
-    private ArrayAdapter<DadesInterval> aaAct;
-
-    /**
-     * Identificador del View les propietats del qual (establertes amb l'editor
-     * XML de la interfase gràfica) estableixen com es mostra cada un els items
-     * o elements de la llista d'intervals referenciada per l'adaptador
-     * {@link #aaAct}.
-     *
-     * @see LlistaActivitatsActivity#layoutID
-     */
-    private int layoutID = R.layout.listview_interval;
+    private IntervalsAdapter aaAct;
 
     /**
      * Nom de la classe per fer aparèixer als missatges de logging del LogCat.
@@ -93,8 +83,7 @@ public class LlistaIntervalsActivity extends AppCompatActivity {
         intervalsListView = (ListView) this.findViewById(R.id.listViewIntervals);
 
         llistaDadesIntervals = new ArrayList<DadesInterval>();
-        aaAct = new ArrayAdapter<DadesInterval>(this, layoutID,
-                llistaDadesIntervals);
+        aaAct = new IntervalsAdapter(this, llistaDadesIntervals);
         intervalsListView.setAdapter(aaAct);
     }
 
