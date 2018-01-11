@@ -17,17 +17,11 @@
         tools:context="com.example.joans.timetracker.LlistaActivitatsActivity">
 
         <ListView
-            android:id="@+id/listViewProjectes"
+            android:id="@+id/listViewActivity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingBottom="20dp"
             tools:listitem="@android:layout/simple_list_item_2" />
-        <ListView
-            android:id="@+id/listViewTasques"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:listitem="@android:layout/simple_list_item_1">
-        </ListView>
 
     </LinearLayout>
 

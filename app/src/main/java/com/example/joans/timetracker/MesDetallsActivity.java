@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
+
 /**
  * Created by Jiacheny on 2018/1/11.
  */
 
-public class mesDetallsActivity extends AppCompatActivity {
+public class MesDetallsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,8 +31,9 @@ public class mesDetallsActivity extends AppCompatActivity {
 
         nom.setText(da.getNom());
         descripcio.setText(da.getDescripcio());
-        data_inici.setText(da.getDataInicial().toString());
-        data_fi.setText(da.getDataFinal().toString());
-        durada.setText(Long.toString(da.getDurada()));
+        SimpleDateFormat formatter = new SimpleDateFormat();
+        data_inici.setText(formatter.format(da.getDataInicial()));
+        data_fi.setText(formatter.format(da.getDataFinal()));
+        durada.setText(String.format("%02dh %02dm %02ds", da.getHores(), da.getMinuts(), da.getSegons()));
     }
 }

@@ -74,10 +74,6 @@ public class DadesInterval implements Serializable {
         String strdi = sdf.format(dataInicial);
         String strdf = sdf.format(dataFinal);
 
-        // TODO : aquest codi de conversió de durada en segons a
-        // hores, minuts i segons, és redundant amb DadesActivitat.
-        // Fer un mètode estàtic en alguna classe a l'efecte.
-
         /**
          * Factor de conversió
          */

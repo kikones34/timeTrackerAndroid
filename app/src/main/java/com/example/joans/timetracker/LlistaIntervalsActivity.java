@@ -62,7 +62,7 @@ public class LlistaIntervalsActivity extends AppCompatActivity {
      *
      * @see LlistaActivitatsActivity#layoutID
      */
-    private int layoutID = R.layout.textview_llista_intervals;
+    private int layoutID = R.layout.listview_interval;
 
     /**
      * Nom de la classe per fer aparèixer als missatges de logging del LogCat.

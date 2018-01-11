@@ -32,9 +32,6 @@ public class DadesActivitat implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    // TODO : passar tots els atributs a private i fer els corresponents
-    // getters.
-
     /**
      * @see Activitat
      */

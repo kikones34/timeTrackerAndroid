@@ -11,11 +11,10 @@ import android.os.Bundle;
  * Created by Jiacheny on 2018/1/10.
  */
 
-public class opcionsDialogFragment extends DialogFragment {
+public class OpcionsDialogFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final String tipus = getArguments().getString("tipus");
         final Integer id = getArguments().getInt("id");
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle(R.string.opcions_dialog)
@@ -24,7 +23,6 @@ public class opcionsDialogFragment extends DialogFragment {
                         switch (which) {
                             case 0:
                                 Intent inte = new Intent(LlistaActivitatsActivity.MES_DETALLS);
-                                inte.putExtra("tipus", tipus);
                                 inte.putExtra("id", id);
                                 getActivity().sendBroadcast(inte);
                                 break;
