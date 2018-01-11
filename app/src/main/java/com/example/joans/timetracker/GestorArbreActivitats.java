@@ -16,6 +16,8 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
 
 import nucli.Activitat;
@@ -308,6 +310,8 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         filter.addAction(LlistaActivitatsActivity.PARA_SERVEI);
         filter.addAction(LlistaIntervalsActivity.PUJA_NIVELL);
         filter.addAction(LlistaActivitatsActivity.CREAR_ACTIVITAT);
+        filter.addAction(LlistaActivitatsActivity.ELIMINAR_ACTIVITAT);
+        filter.addAction(LlistaActivitatsActivity.EDITAR_ACTIVITAT);
         receptor = new Receptor();
         registerReceiver(receptor, filter);
         actualitzadorIU = new Actualitzador(this, periodeRefrescIU,
@@ -427,7 +431,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
             String accio = intent.getAction();
             Log.d(tag, "accio = " + accio);
             if ((accio.equals(LlistaActivitatsActivity.ENGEGA_CRONOMETRE))
-                 || (accio.equals(LlistaActivitatsActivity.PARA_CRONOMETRE))) {
+                    || (accio.equals(LlistaActivitatsActivity.PARA_CRONOMETRE))) {
                 int posicio = intent.getIntExtra("posicio", -1);
                 Tasca tascaClicada = (Tasca) ((Projecte) activitatPareActual).getActivitats().toArray()[posicio];
                 if (accio.equals(LlistaActivitatsActivity.ENGEGA_CRONOMETRE)) {
@@ -435,7 +439,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
                         // rellotge.engega();
                         tascaClicada.engegaCronometre(rellotge);
                         Log.d(tag, "engego cronometre de "
-                            + tascaClicada.getNom());
+                                + tascaClicada.getNom());
                         tasquesCronometrantse.add(tascaClicada);
                         actualitzadorIU.engega(); // si ja ho esta no fa res
                     } else {
@@ -487,7 +491,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
                 // com una tasca.
                 Activitat activitatClicada =
                         (Activitat) ((Projecte) activitatPareActual)
-                        .getActivitats().toArray()[posicio];
+                                .getActivitats().toArray()[posicio];
                 activitatPareActual = activitatClicada;
             } else if (accio.equals(LlistaActivitatsActivity.PARA_SERVEI)) {
                 paraServei();
@@ -497,11 +501,25 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
                 String tipus = intent.getStringExtra("tipus");
 
                 crearActivitat(nom, descripcio, tipus.contains("Projecte"));
+            } else if (accio.equals(LlistaActivitatsActivity.ELIMINAR_ACTIVITAT)) {
+                int id = intent.getIntExtra("id", 0);
+                eliminarActivitat((Activitat) ((Projecte) activitatPareActual).getActivitats().toArray()[id]);
+                enviaFills();
             } else {
                 Log.d(tag, "accio desconeguda!");
             }
             Log.d(tag, "final de onReceive");
         }
+    }
+
+    public void eliminarActivitat(Activitat act) {
+        /*if (act instanceof Projecte) {
+            Projecte proj = (Projecte) act;
+            for (Activitat a : proj.getActivitats()) {
+                eliminarActivitat(a);
+            }
+        }*/
+        act.getProjectePare().getActivitats().remove(act);
     }
 
     /**

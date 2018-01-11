@@ -65,7 +65,9 @@ public class Projecte extends Activitat {
     public boolean isAlgunaActivitatEngegada() {
         for (Activitat act : activitats) {
             if (act.getClass().getName().endsWith("Projecte")) {
-                ((Projecte) act).isAlgunaActivitatEngegada();
+                if ( ((Projecte) act).isAlgunaActivitatEngegada() ) {
+                    return true;
+                }
             } else {
                 if (((Tasca) act).isCronometreEngegat()) {
                     return true;

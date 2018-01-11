@@ -32,8 +32,10 @@ public class MesDetallsActivity extends AppCompatActivity {
         nom.setText(da.getNom());
         descripcio.setText(da.getDescripcio());
         SimpleDateFormat formatter = new SimpleDateFormat();
-        data_inici.setText(formatter.format(da.getDataInicial()));
-        data_fi.setText(formatter.format(da.getDataFinal()));
+
+        data_inici.setText(da.getDataInicial() == null ? "---" : formatter.format(da.getDataInicial()));
+
+        data_fi.setText(da.getDataFinal() == null ? "---" : formatter.format(da.getDataFinal()));
         durada.setText(String.format("%02dh %02dm %02ds", da.getHores(), da.getMinuts(), da.getSegons()));
     }
 }

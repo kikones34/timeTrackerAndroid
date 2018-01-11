@@ -154,7 +154,6 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                                 .getSerializableExtra("llista_dades_activitats");
                 aaAct.clear();
 
-                /* TODO: poner proyectos antes que tasques y ordenarlos de alguna forma */
                 ArrayList<PackDadesActivitatPosition> llistaProjectes = new ArrayList<>();
                 ArrayList<PackDadesActivitatPosition> llistaTasques = new ArrayList<>();
 
@@ -190,6 +189,20 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                 args.putSerializable("activitat", pdap.getDades());
                 inte.putExtras(args);
                 startActivity(inte);
+            } else if (intent.getAction().equals(LlistaActivitatsActivity.DEMANAR_ELIMINAR_ACTIVITAT)) {
+                int id = intent.getIntExtra("id", 0);
+                Intent inte = new Intent(LlistaActivitatsActivity.ELIMINAR_ACTIVITAT);
+                inte.putExtra("id", llistaDadesActivities.get(id).getPos());
+                sendBroadcast(inte);
+            } else if (intent.getAction().equals(LlistaActivitatsActivity.DEMANAR_EDITAR_ACTIVITAT)) {
+
+            } else if (intent.getAction().equals(LlistaActivitatsActivity.ACTIVITAT_EDITAT)) {
+                Bundle extras = intent.getExtras();
+                String nom = extras.getString("nom");
+                String descripcio = extras.getString("descripcio");
+
+                Intent inte = new Intent(LlistaActivitatsActivity.EDITAR_ACTIVITAT);
+
             } else {
                 // no pot ser
                 assert false : "intent d'acció no prevista";
@@ -251,6 +264,16 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
 
     public static final String MES_DETALLS = "Mes_detalls";
 
+    public static final String ELIMINAR_ACTIVITAT = "Eliminar_activitat";
+
+    public static final String DEMANAR_ELIMINAR_ACTIVITAT = "Demanar_eliminar_activitat";
+
+    public static final String DEMANAR_EDITAR_ACTIVITAT = "Demanar_editar_activitat";
+
+    public static final String ACTIVITAT_EDITAT = "Activitat_editat";
+
+    public static final String EDITAR_ACTIVITAT = "Editar_activitat";
+
     /**
      * En voler pujar de nivell quan ja som a dalt de tot vol dir que l'usuari
      * desitja "deixar de treballar del tot" amb la aplicació, així que "parem"
@@ -277,6 +300,9 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
         filter = new IntentFilter();
         filter.addAction(GestorArbreActivitats.TE_FILLS);
         filter.addAction(LlistaActivitatsActivity.MES_DETALLS);
+        filter.addAction(LlistaActivitatsActivity.DEMANAR_ELIMINAR_ACTIVITAT);
+        filter.addAction(LlistaActivitatsActivity.DEMANAR_EDITAR_ACTIVITAT);
+        filter.addAction(LlistaActivitatsActivity.ACTIVITAT_EDITAT);
         receptor = new Receptor();
         registerReceiver(receptor, filter);
 

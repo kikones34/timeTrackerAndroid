@@ -141,11 +141,11 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
             String tipus = scr_tipus.getSelectedItem().toString();
 
             if (nom.isEmpty()) {
-                Toast toast = Toast.makeText(FormulariCrearActivitatActivity.this, "nom buit", Toast.LENGTH_SHORT);
+                Toast toast = Toast.makeText(FormulariCrearActivitatActivity.this, R.string.nom_buit, Toast.LENGTH_SHORT);
                 toast.show();
             } else {
                 if (descripcio.isEmpty()) {
-                    Toast toast = Toast.makeText(FormulariCrearActivitatActivity.this, "descripció buit", Toast.LENGTH_SHORT);
+                    Toast toast = Toast.makeText(FormulariCrearActivitatActivity.this, R.string.descripcio_buida, Toast.LENGTH_SHORT);
                     toast.show();
                 } else {
                     intent.putExtra("nom", nom);

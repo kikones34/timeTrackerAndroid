@@ -21,4 +21,8 @@
     <string name="array_opcions_dialog_md">Més detalls</string>
     <string name="array_opcions_dialog_ed">Editar</string>
     <string name="array_opcions_dialog_el">Eliminar</string>
+    <string name="edit_dialog">Editar activitat</string>
+    <string name="OK">Acceptar</string>
+    <string name="nom_buit">Nom buit</string>
+    <string name="descripcio_buida">Descripció buida</string>
 </resources>

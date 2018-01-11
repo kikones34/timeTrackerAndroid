@@ -20,17 +20,13 @@ public class OpcionsDialogFragment extends DialogFragment {
         builder.setTitle(R.string.opcions_dialog)
                 .setItems(R.array.opcions_dialog, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        switch (which) {
-                            case 0:
-                                Intent inte = new Intent(LlistaActivitatsActivity.MES_DETALLS);
-                                inte.putExtra("id", id);
-                                getActivity().sendBroadcast(inte);
-                                break;
-                            case 1:
-                                break;
-                            case 2:
-                                break;
-                        }
+                        Intent[] intents = {
+                                new Intent(LlistaActivitatsActivity.MES_DETALLS),
+                                new Intent(LlistaActivitatsActivity.DEMANAR_EDITAR_ACTIVITAT),
+                                new Intent(LlistaActivitatsActivity.DEMANAR_ELIMINAR_ACTIVITAT),
+                        };
+                        intents[which].putExtra("id", id);
+                        getActivity().sendBroadcast(intents[which]);
                     }
                 });
         return builder.create();
