@@ -1,6 +1,5 @@
 package com.example.joans.timetracker;
 
-import android.app.DialogFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -17,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -183,6 +183,21 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                 aaProj.notifyDataSetChanged();
                 aaTasq.notifyDataSetChanged();
                 Log.d(tag, "mostro els fills actualitzats");
+            } else if (intent.getAction().equals(LlistaActivitatsActivity.MES_DETALLS)) {
+                String tipus = intent.getStringExtra("tipus");
+                Integer id = intent.getIntExtra("id", 0);
+                packDadesActivitatPosition pdap;
+                if (tipus.contains("Projecte")) {
+                    pdap = llistaDadesProjectes.get(id);
+
+                } else {
+                    pdap = llistaDadesTasques.get(id);
+                }
+                Intent inte = new Intent(LlistaActivitatsActivity.this, mesDetallsActivity.class);
+                Bundle args = new Bundle();
+                args.putSerializable("activitat", pdap.getDades());
+                inte.putExtras(args);
+                startActivity(inte);
             } else {
                 // no pot ser
                 assert false : "intent d'acció no prevista";
@@ -242,6 +257,8 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
 
     public static final String CREAR_ACTIVITAT = "Crear_activitat";
 
+    public static final String MES_DETALLS = "Mes_detalls";
+
     /**
      * En voler pujar de nivell quan ja som a dalt de tot vol dir que l'usuari
      * desitja "deixar de treballar del tot" amb la aplicació, així que "parem"
@@ -267,6 +284,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
         IntentFilter filter;
         filter = new IntentFilter();
         filter.addAction(GestorArbreActivitats.TE_FILLS);
+        filter.addAction(LlistaActivitatsActivity.MES_DETALLS);
         receptor = new Receptor();
         registerReceiver(receptor, filter);
 
@@ -363,24 +381,18 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
         listViewProjectes.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(final AdapterView<?> arg0,
-                                           final View arg1, final int pos, final long id) {
+                                               final View arg1, final int pos, final long id) {
                 Log.i(tag, "onItemLongClick");
                 Log.d(tag, "pos = " + pos + ", id = " + id);
 
-                mesInformacioDialogFragment info = new mesInformacioDialogFragment();
-
                 Bundle args = new Bundle();
-                args.putString("nom", llistaDadesProjectes.get(pos).getDades().getNom());
-                args.putString("descripcio",llistaDadesProjectes.get(pos)
-                        .getDades().getDescripcio());
-                info.setArguments(args);
-                info.show(getFragmentManager(), "Més detalls");
-                info.getDialog().setOnDismissListener(new DialogInterface.OnDismissListener() {
-                    @Override
-                    public void onDismiss(DialogInterface dialogInterface) {
+                args.putString("tipus", "Projecte");
+                args.putInt("id", pos);
 
-                    }
-                });
+                opcionsDialogFragment info = new opcionsDialogFragment();
+
+                info.setArguments(args);
+                info.show(getFragmentManager(), "Opcions");
                 return true;
             }
         });

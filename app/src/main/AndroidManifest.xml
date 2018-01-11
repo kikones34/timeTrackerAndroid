@@ -27,6 +27,10 @@
             android:name=".FormulariCrearActivitatActivity">
         </activity>
 
+        <activity
+            android:name=".mesDetallsActivity">
+        </activity>
+
         <service
             android:name="GestorArbreActivitats"
             android:enabled="true" >

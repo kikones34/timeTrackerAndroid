@@ -17,4 +17,8 @@
     <string name="hour">h</string>
     <string name="min">m</string>
     <string name="sec">s</string>
+    <string name="opcions_dialog">Opcions</string>
+    <string name="array_opcions_dialog_md">Més detalls</string>
+    <string name="array_opcions_dialog_ed">Editar</string>
+    <string name="array_opcions_dialog_el">Eliminar</string>
 </resources>

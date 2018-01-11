@@ -148,7 +148,7 @@ public class DadesActivitat implements Serializable {
         } else {
             strdurada = "0s";
         }
-        str += " " + strdurada;
+        str += "\n" + strdurada;
         return str;
     }
 
