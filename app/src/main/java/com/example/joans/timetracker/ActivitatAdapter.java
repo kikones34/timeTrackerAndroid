@@ -32,7 +32,7 @@ public class ActivitatAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_activity, parent, false);
         }
         // Lookup view for data population
-        TextView nom = (TextView) convertView.findViewById(R.id.textview_tasques);
+        final TextView nom = (TextView) convertView.findViewById(R.id.textview_tasques);
         TextView durada = (TextView) convertView.findViewById(R.id.textview_tasques_sub);
         // Populate the data into the template view using the data object
         nom.setText(data.getDades().getNom());
@@ -56,8 +56,10 @@ public class ActivitatAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
 
         if (data.getDades().isCronometreEngegat()) {
             nom.setTextColor(Color.RED);
+            button.setText("Stop");
         } else {
             nom.setTextColor(Color.BLACK);
+            button.setText("Start");
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -67,10 +69,12 @@ public class ActivitatAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
                 if (!data.getDades().isCronometreEngegat()) {
                     intent = new Intent(
                             LlistaActivitatsActivity.ENGEGA_CRONOMETRE);
+                    nom.setTextColor(Color.RED);
                     button.setText("Stop");
                 } else {
                     intent = new Intent(
                             LlistaActivitatsActivity.PARA_CRONOMETRE);
+                    nom.setTextColor(Color.BLACK);
                     button.setText("Start");
                 }
                 intent.putExtra("posicio", data.getPos());

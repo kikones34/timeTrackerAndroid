@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ScrollView01"
     android:layout_width="match_parent"
@@ -9,7 +10,7 @@
     android:focusableInTouchMode="true">
 
     <LinearLayout
-        android:layout_width="383dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         tools:layout_editor_absoluteX="1dp"
@@ -32,80 +33,140 @@
             android:visibility="visible">
         </Spinner>
 
-        <TextView
-            android:id="@+id/formulari_check_AutoStart_tv"
-            android:layout_width="152dp"
-            android:layout_height="wrap_content"
-            android:text="@string/formulari_check_autoStart"
-            android:visibility="visible" />
-
-        <CheckBox
-            android:id="@+id/formulari_check_AutoStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible" />
-
-        <TextView
-            android:id="@+id/formulari_time_autoStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible"></TextView>
-
-        <CheckBox
-            android:id="@+id/formulari_check_AutoEnd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:visibility="visible" />
-
-        <TextView
-            android:id="@+id/formulari_check_AutoEnd_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/formulari_check_autoEnd"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/formulari_time_autoEnd_hour"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/default_value_time"
-            android:visibility="visible"></EditText>
-
-        <TextView
-            android:id="@+id/autoEnd_h"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hour"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/formulari_time_autoEnd_min"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/default_value_time"
-            android:visibility="visible"></EditText>
-
-        <TextView
-            android:id="@+id/autoEnd_m"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/min"
-            android:visibility="visible" />
-
-        <EditText
-            android:id="@+id/formulari_time_autoEnd_sec"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/default_value_time"
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/formulari_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:visibility="visible">
-        </EditText>
 
-        <TextView
-            android:id="@+id/autoEnd_s"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/sec"
-            android:visibility="visible" />
+            <CheckBox
+                android:id="@+id/formulari_check_AutoStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="32dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/formulari_check_AutoStart_tv"
+                android:layout_width="152dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="38dp"
+                android:text="@string/formulari_check_autoStart"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/formulari_check_AutoStart"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/formulari_time_autoStart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="5dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_check_AutoStart"></TextView>
+
+            <CheckBox
+                android:id="@+id/formulari_check_AutoEnd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoStart" />
+
+            <TextView
+                android:id="@+id/formulari_check_AutoEnd_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/formulari_check_autoEnd"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/formulari_check_AutoEnd"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoStart" />
+
+            <EditText
+                android:id="@+id/formulari_time_autoEnd_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:text="@string/default_value_time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_check_AutoEnd"></EditText>
+
+            <TextView
+                android:id="@+id/autoEnd_h"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/hour"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/formulari_time_autoEnd_hour"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_check_AutoEnd" />
+
+            <EditText
+                android:id="@+id/formulari_time_autoEnd_min"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:text="@string/default_value_time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_hour"></EditText>
+
+            <TextView
+                android:id="@+id/autoEnd_m"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/min"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/formulari_time_autoEnd_min"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_hour" />
+
+            <EditText
+                android:id="@+id/formulari_time_autoEnd_sec"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:text="@string/default_value_time"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_min"></EditText>
+
+            <TextView
+                android:id="@+id/autoEnd_s"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/sec"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/formulari_time_autoEnd_sec"
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_min" />
+
+        </android.support.constraint.ConstraintLayout>
 
 
         <TextView
@@ -164,4 +225,4 @@
             android:text="@string/formulari_boto_tornar_enrere"
             android:visibility="visible" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+</ScrollView>

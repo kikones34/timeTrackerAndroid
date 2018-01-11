@@ -62,4 +62,17 @@ public class Projecte extends Activitat {
         activitats = new ArrayList<Activitat>();
     }
 
+    public boolean isAlgunaActivitatEngegada() {
+        for (Activitat act : activitats) {
+            if (act.getClass().getName().endsWith("Projecte")) {
+                ((Projecte) act).isAlgunaActivitatEngegada();
+            } else {
+                if (((Tasca) act).isCronometreEngegat()) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
 }

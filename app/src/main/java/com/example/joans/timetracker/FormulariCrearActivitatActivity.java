@@ -3,6 +3,7 @@ package com.example.joans.timetracker;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -42,6 +43,8 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
         spr.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.formulari_constraintLayout);
+
                 Spinner spr = (Spinner) findViewById(R.id.formulari_spr_tipus_activitat);
 
                 CheckBox cb1 = (CheckBox) findViewById(R.id.formulari_check_AutoStart);
@@ -58,6 +61,7 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
                 EditText sec = (EditText) findViewById(R.id.formulari_time_autoEnd_sec);
 
                 if(spr.getSelectedItem().toString().contains("Tasca")) {
+                    cl.setVisibility(view.VISIBLE);
                     cb1.setVisibility(view.VISIBLE);
                     cb2.setVisibility(view.VISIBLE);
                     tv1.setVisibility(view.VISIBLE);
@@ -73,6 +77,7 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
                     hour.setVisibility(view.GONE);
                     min.setVisibility(view.GONE);
                     sec.setVisibility(view.GONE);
+                    cl.setVisibility(view.GONE);
                     cb1.setChecked(false);
                     cb2.setChecked(false);
                 }

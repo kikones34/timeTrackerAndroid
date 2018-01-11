@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 import nucli.Activitat;
+import nucli.Projecte;
 import nucli.Tasca;
 
 
@@ -87,8 +88,7 @@ public class DadesActivitat implements Serializable {
      * adequar la interacció (per exemple, no hauria de deixar cronometrar una
      * tasca que ja ho està sent).
      */
-    private boolean isCronometreEngegat = false; // nomes te sentit per tasques
-
+    private boolean isCronometreEngegat = false;
     /**
      * Extreu les dades de la activitat passada per paràmetre i les copia als
      * atributs propis.
@@ -120,6 +120,7 @@ public class DadesActivitat implements Serializable {
         if (act.getClass().getName().endsWith("Projecte")) {
             isProjecte = true;
             isTasca = false;
+            isCronometreEngegat = ((Projecte) act).isAlgunaActivitatEngegada();
         } else {
             isProjecte = false;
             isTasca = true;
