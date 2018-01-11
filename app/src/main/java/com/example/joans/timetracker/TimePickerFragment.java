@@ -36,7 +36,6 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
         //Set a message for user
         tv.setText("La tasca començarà cada dia a les ");
         //Display the user changed time on TextView
-        tv.setText(tv.getText() + String.valueOf(hourOfDay)
-                + ":" + String.valueOf(minute) + "\n");
+        tv.setText(tv.getText() + String.format("%02dh %02dm", hourOfDay, minute) + "\n");
     }
 }

@@ -20,6 +20,7 @@
             android:id="@+id/formulari_textview1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="@string/formulari_tipus_dactivitat"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
@@ -27,6 +28,7 @@
             android:id="@+id/formulari_spr_tipus_activitat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_weight=".40"
             android:entries="@array/formulari_tipus_activitat"
             android:prompt="@string/formulari_seleccio_tipus_dactivitat"
@@ -62,7 +64,7 @@
 
             <TextView
                 android:id="@+id/formulari_time_autoStart"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="5dp"
@@ -102,7 +104,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formulari_check_AutoEnd"></EditText>
+                app:layout_constraintTop_toBottomOf="@+id/formulari_check_AutoEnd">
+            </EditText>
 
             <TextView
                 android:id="@+id/autoEnd_h"
@@ -127,7 +130,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_hour"></EditText>
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_hour">
+            </EditText>
 
             <TextView
                 android:id="@+id/autoEnd_m"
@@ -152,7 +156,8 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:visibility="visible"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_min"></EditText>
+                app:layout_constraintTop_toBottomOf="@+id/formulari_time_autoEnd_min">
+            </EditText>
 
             <TextView
                 android:id="@+id/autoEnd_s"
@@ -173,6 +178,7 @@
             android:id="@+id/formulari_textview2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="@string/formulari_nom_activitat"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:visibility="visible" />
@@ -181,6 +187,7 @@
             android:id="@+id/formulari_nom_activitat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:hint="@string/formulari_nom_activitat_hint"
             android:imeOptions="actionNext"
             android:inputType="textNoSuggestions"
@@ -192,6 +199,7 @@
             android:id="@+id/formulari_textview3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:text="@string/formulari_descripcio"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:visibility="visible" />
@@ -200,29 +208,46 @@
             android:id="@+id/formulari_descripcio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:hint="@string/formulari_descripcio_hint"
             android:inputType="textMultiLine"
             android:lines="3"
             android:visibility="visible" />
 
-        <Button
-            android:id="@+id/formulari_btn_crear"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".50"
-            android:backgroundTint="@android:color/holo_green_light"
-            android:text="@string/formulari_boto_crear"
-            android:visibility="visible" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible">
 
-        <Button
-            android:id="@+id/formulari_btn_tornar"
-            style="@style/Widget.AppCompat.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight=".50"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:text="@string/formulari_boto_tornar_enrere"
-            android:visibility="visible" />
+            <Button
+                android:id="@+id/formulari_btn_tornar"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight=".50"
+                android:backgroundTint="@android:color/holo_red_light"
+                android:text="@string/formulari_boto_tornar_enrere"
+                android:visibility="visible"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/formulari_btn_crear"
+                style="@style/Widget.AppCompat.Button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight=".50"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:text="@string/formulari_boto_crear"
+                android:visibility="visible"
+                app:layout_constraintStart_toEndOf="@+id/formulari_btn_tornar"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+
     </LinearLayout>
 </ScrollView>
