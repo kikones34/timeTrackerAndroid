@@ -563,6 +563,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
             }
             resposta.putExtra("llista_dades_intervals", llistaDadesInter);
         }
+        resposta.putExtra("nom_pare", activitatPareActual.getNom());
         sendBroadcast(resposta);
         Log.d(tag, "enviat intent TE_FILLS d'activitat "
                 + activitatPareActual.getClass().getName());

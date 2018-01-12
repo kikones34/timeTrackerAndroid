@@ -23,6 +23,12 @@ public class MesDetallsActivity extends AppCompatActivity {
             da = (DadesActivitat) b.getSerializable("activitat");
         }
 
+        if (da.isProjecte()) {
+            setTitle(R.string.title_detalls_projecte);
+        } else {
+            setTitle(R.string.title_detalls_tasca);
+        }
+
         TextView nom = (TextView) findViewById(R.id.mes_detalls_nom);
         TextView descripcio = (TextView) findViewById(R.id.mes_detalls_descripcio);
         TextView data_inici = (TextView) findViewById(R.id.mes_detalls_data_inici);

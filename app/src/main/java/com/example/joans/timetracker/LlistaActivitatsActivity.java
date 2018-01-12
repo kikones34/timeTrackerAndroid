@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
@@ -152,6 +153,13 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                 ArrayList<DadesActivitat> llistaDadesAct =
                         (ArrayList<DadesActivitat>) intent
                                 .getSerializableExtra("llista_dades_activitats");
+                String nom_pare = intent.getStringExtra("nom_pare");
+                if (activitatPareActualEsArrel) {
+                    setTitle("Time Tracker");
+                } else {
+                    setTitle(nom_pare);
+                }
+
                 aaAct.clear();
 
                 ArrayList<PackDadesActivitatPosition> llistaProjectes = new ArrayList<>();
@@ -372,6 +380,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
         Log.i(tag, "onCreate");
 
         setContentView(R.layout.activity_llista_activitats);
+
         listViewActivities = (ListView) this.findViewById(R.id.listViewActivity);
 
         fab = (FloatingActionButton) this.findViewById(R.id.addActivity);

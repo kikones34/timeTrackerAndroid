@@ -144,6 +144,8 @@ public class LlistaIntervalsActivity extends AppCompatActivity {
                 }
                 aaAct.notifyDataSetChanged();
             }
+            String nom_pare = intent.getStringExtra("nom_pare");
+            setTitle(nom_pare);
             Log.i(tag, "final de onReceive LlistaIntervals");
         }
     }

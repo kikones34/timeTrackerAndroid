@@ -2,7 +2,7 @@
     <string name="app_name">TimeTracker</string>
     <string name="tasca_button">Start</string>
     <string name="formulari_nom_activitat">Nom:</string>
-    <string name="formulari_nom_activitat_hint">Nom de l\'activitat:&#8230;</string>
+    <string name="formulari_nom_activitat_hint">Nom de l\'activitat&#8230;</string>
     <string name="formulari_tipus_dactivitat">Tipus d\'activitat:</string>
     <string name="formulari_seleccio_tipus_dactivitat">Selecciona el tipus d\'activitat:</string>
     <string name="formulari_descripcio">Descripció:</string>
@@ -27,4 +27,7 @@
     <string name="descripcio_buida">Descripció buida</string>
     <string name="auto_start_desc">La tasca començarà cada dia a les</string>
     <string name="auto_end_desc">La tasca es pararà cada dia a les</string>
+    <string name="title_nova_activitat">Afegir nova activitat</string>
+    <string name="title_detalls_tasca">Detalls de la tasca</string>
+    <string name="title_detalls_projecte">Detalls del projecte</string>
 </resources>

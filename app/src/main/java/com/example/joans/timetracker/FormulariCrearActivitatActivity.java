@@ -35,6 +35,7 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulari_activitat);
+        setTitle(R.string.title_nova_activitat);
 
         Button crear = findViewById(R.id.formulari_btn_crear);
         Button tornar = findViewById(R.id.formulari_btn_tornar);
