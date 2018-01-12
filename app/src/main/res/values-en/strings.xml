@@ -1,2 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="tasca_start_button">Start</string>
+    <string name="formulari_nom_activitat">Name:</string>
+    <string name="tasca_stop_button">Stop</string>
+    <string name="formulari_nom_activitat_hint">Activity name…</string>
+    <string name="formulari_tipus_dactivitat">Activity type:</string>
+    <string name="formulari_descripcio">Description:</string>
+    <string name="formulari_descripcio_hint">Activity description…</string>
+    <string name="formulari_boto_crear">Create</string>
+    <string name="formulari_opcio_projecte">Project</string>
+    <string name="formulari_opcio_tasca">Task</string>
+    <string name="formulari_boto_tornar_enrere">Cancel</string>
+    <string name="formulari_check_autoStart">Automatic start</string>
+    <string name="formulari_check_autoEnd">Automatic end</string>
+    <string name="opcions_dialog">Options</string>
+    <string name="array_opcions_dialog_md">More details</string>
+    <string name="array_opcions_dialog_ed">Edit</string>
+    <string name="array_opcions_dialog_el">Delete</string>
+    <string name="edit_dialog">Edit activity</string>
+    <string name="OK">Accept</string>
+    <string name="nom_buit">Name is empty</string>
+    <string name="descripcio_buida">Description is empty</string>
+    <string name="auto_start_desc">The task will start everyday at</string>
+    <string name="auto_end_desc">The task will stop everyday at</string>
+    <string name="title_nova_activitat">Add new activity</string>
+    <string name="title_detalls_tasca">Task details</string>
+    <string name="title_detalls_projecte">Project details</string>
+    <string name="warning">Warning!</string>
+    <string name="warning_exit_app">There are still some active tasks. Are you sure you want to exit the application?</string>
+    <string name="opcio_simple">Simple</string>
+    <string name="opcio_detallat">Detailed</string>
+    <string name="data_inici">Start date:</string>
+    <string name="data_fi">End date:</string>
+    <string name="format_informe">Format:</string>
+    <string name="generar_informe">Generate</string>
+    <string name="informe_generat">The report has been generated</string>
+    <string name="generar_informe_title">Generate report</string>
+    <string name="format_text_pla">Plain text</string>
+    <string name="format_web">Web</string>
+    <string name="format_pdf">PDF</string>
+    <string name="interval_data_inici">From:</string>
+    <string name="interval_data_fi">To:</string>
+    <string name="durada">Duration:</string>
+    <string name="detalls_data_inici">Start date:</string>
+    <string name="datalls_data_fi">End date:</string>
+    <string name="tipus_informe">Report type:</string>
+    <string name="title_options_language">Choose a language</string>
+</resources>

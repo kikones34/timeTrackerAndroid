@@ -129,8 +129,13 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
 
             String nom = et_nom.getText().toString();
             String descripcio = et_descripcio.getText().toString();
-            RadioButton selected_radio = findViewById(act_tipus.getCheckedRadioButtonId());
-            String tipus = selected_radio.getText().toString();
+            int selected_radio = act_tipus.getCheckedRadioButtonId();
+            String tipus;
+            if (selected_radio == R.id.radio_projecte) {
+                tipus = "Projecte";
+            } else {
+                tipus = "Tasca";
+            }
 
             if (nom.isEmpty()) {
                 Toast toast = Toast.makeText(FormulariCrearActivitatActivity.this, R.string.nom_buit, Toast.LENGTH_SHORT);

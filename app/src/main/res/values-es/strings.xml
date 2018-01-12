@@ -1,2 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="tasca_start_button">Empezar</string>
+    <string name="formulari_nom_activitat">Nombre:</string>
+    <string name="tasca_stop_button">Parar</string>
+    <string name="formulari_nom_activitat_hint">Nombre de la actividad…</string>
+    <string name="formulari_tipus_dactivitat">Tipo de actividad:</string>
+    <string name="formulari_descripcio">Descripción:</string>
+    <string name="formulari_descripcio_hint">Descripción de la actividad…</string>
+    <string name="formulari_boto_crear">Crear</string>
+    <string name="formulari_opcio_projecte">Proyecto</string>
+    <string name="formulari_opcio_tasca">Tarea</string>
+    <string name="formulari_boto_tornar_enrere">Cancelar</string>
+    <string name="formulari_check_autoStart">Arranque automático</string>
+    <string name="formulari_check_autoEnd">Parada automática</string>
+    <string name="opcions_dialog">Opciones</string>
+    <string name="array_opcions_dialog_md">Más detalles</string>
+    <string name="array_opcions_dialog_ed">Editar</string>
+    <string name="array_opcions_dialog_el">Eliminar</string>
+    <string name="edit_dialog">Editar actividad</string>
+    <string name="OK">Aceptar</string>
+    <string name="nom_buit">Nombre vacío</string>
+    <string name="descripcio_buida">Descripción vacía</string>
+    <string name="auto_start_desc">La tarea comenzará cada día a las</string>
+    <string name="auto_end_desc">La tarea terminará cada día a las</string>
+    <string name="title_nova_activitat">Añadir nueva actividad</string>
+    <string name="title_detalls_tasca">Detalles de la tarea</string>
+    <string name="title_detalls_projecte">Detalles del proyecto</string>
+    <string name="warning">Atención!</string>
+    <string name="warning_exit_app">Aún hay tareas activas. Estás seguro de que quieres salir de la aplicación?</string>
+    <string name="opcio_simple">Simple</string>
+    <string name="opcio_detallat">Detallado</string>
+    <string name="data_inici">Fecha inicio:</string>
+    <string name="data_fi">Fecha fin:</string>
+    <string name="format_informe">Formato:</string>
+    <string name="generar_informe">Generar</string>
+    <string name="informe_generat">El informe ha sido generado</string>
+    <string name="generar_informe_title">Generar informe</string>
+    <string name="format_text_pla">Texto plano</string>
+    <string name="format_web">Web</string>
+    <string name="format_pdf">PDF</string>
+    <string name="interval_data_inici">Desde:</string>
+    <string name="interval_data_fi">Hasta:</string>
+    <string name="durada">Duración:</string>
+    <string name="detalls_data_inici">Fecha inicio:</string>
+    <string name="datalls_data_fi">Fecha fin:</string>
+    <string name="tipus_informe">Tipo de informe:</string>
+    <string name="title_options_language">Escoge un idioma</string>
+</resources>
