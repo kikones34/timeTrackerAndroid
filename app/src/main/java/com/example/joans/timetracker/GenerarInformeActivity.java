@@ -24,6 +24,8 @@ public class GenerarInformeActivity extends AppCompatActivity {
 
         setTitle(R.string.generar_informe_title);
 
+        final String date_format = "dd/MM/yyyy";
+
         final EditText data_inici = findViewById(R.id.informe_data_inici);
         final EditText data_fi = findViewById(R.id.informe_data_fi);
         final Spinner format = findViewById(R.id.spinner_format_informe);
@@ -59,8 +61,7 @@ public class GenerarInformeActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd/MM/yy"; //In which you need put here
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                SimpleDateFormat sdf = new SimpleDateFormat(date_format);
                 data_inici.setText(sdf.format(calendar.getTime()));
             }
         };
@@ -73,8 +74,7 @@ public class GenerarInformeActivity extends AppCompatActivity {
                 calendar.set(Calendar.YEAR, year);
                 calendar.set(Calendar.MONTH, monthOfYear);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                String myFormat = "dd/MM/yy"; //In which you need put here
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat);
+                SimpleDateFormat sdf = new SimpleDateFormat(date_format);
                 data_fi.setText(sdf.format(calendar.getTime()));
             }
         };

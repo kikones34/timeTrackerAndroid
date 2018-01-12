@@ -1,5 +1,6 @@
 package com.example.joans.timetracker;
 
+import android.app.DialogFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -12,14 +13,12 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-import nucli.Activitat;
 import nucli.Projecte;
 import nucli.Tasca;
 
@@ -616,6 +615,8 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                 sendBroadcast(new Intent(LlistaActivitatsActivity.DONAM_FILLS));
                 break;
             case R.id.button_language:
+                LanguageOptionsFragment frag = new LanguageOptionsFragment();
+                frag.show(getFragmentManager(), "change locale");
                 break;
             default:
                 assert false : "Botó no contemplat";

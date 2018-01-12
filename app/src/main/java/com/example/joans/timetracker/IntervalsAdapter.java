@@ -31,10 +31,13 @@ public class IntervalsAdapter extends ArrayAdapter<DadesInterval> {
 
         TextView descripcio = (TextView) convertView.findViewById(R.id.textview_intervals);
         SimpleDateFormat formatter = new SimpleDateFormat();
+        String interval_data_inici = convertView.getResources().getString(R.string.interval_data_inici);
+        String interval_data_fi = convertView.getResources().getString(R.string.interval_data_fi);
+        String durada = convertView.getResources().getString(R.string.durada);
         descripcio.setText(
-                "Desde: " + formatter.format(di.getDataInicial()) + "\n"
-                + "Fins a: " + formatter.format(di.getDataFinal()) + "\n"
-                + "Durada: " + di.getDuradaFormatted()
+                interval_data_inici + " " + formatter.format(di.getDataInicial()) + "\n"
+                + interval_data_fi + " " + formatter.format(di.getDataFinal()) + "\n"
+                + durada + " " + di.getDuradaFormatted()
         );
 
         return convertView;

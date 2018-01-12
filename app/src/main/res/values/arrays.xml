@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="formulari_tipus_activitat">
-        <item>@string/formulari_opcio_projecte</item>
-        <item>@string/formulari_opcio_tasca</item>
-    </string-array>
     <string-array name="opcions_dialog">
         <item>@string/array_opcions_dialog_md</item>
         <item>@string/array_opcions_dialog_ed</item>
         <item>@string/array_opcions_dialog_el</item>
+    </string-array>
+    <string-array name="formats_informe">
+        <item>@string/format_text_pla</item>
+        <item>@string/format_web</item>
+        <item>@string/format_pdf</item>
+    </string-array>
+    <string-array name="options_language">
+        <item>@string/option_language_ca</item>
+        <item>@string/option_language_es</item>
+        <item>@string/option_language_en</item>
+        <item>@string/option_language_zh</item>
     </string-array>
 </resources>

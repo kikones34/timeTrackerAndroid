@@ -45,7 +45,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="0.3"
-        android:text="@string/tasca_button"
+        android:text="@string/tasca_start_button"
         android:visibility="visible"
         android:focusable="false"/>
 

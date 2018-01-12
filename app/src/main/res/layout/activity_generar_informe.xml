@@ -144,7 +144,7 @@
             android:layout_marginStart="16dp"
             android:layout_weight=".50"
             android:backgroundTint="@android:color/holo_green_light"
-            android:text="@string/formulari_boto_crear"
+            android:text="@string/generar_informe"
             android:visibility="visible"
             app:layout_constraintStart_toEndOf="@+id/informe_tornar"
             app:layout_constraintTop_toTopOf="parent" />

@@ -32,15 +32,15 @@ public class ActivitatAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_activity, parent, false);
         }
         // Lookup view for data population
-        final TextView nom = (TextView) convertView.findViewById(R.id.textview_tasques);
-        TextView durada = (TextView) convertView.findViewById(R.id.textview_tasques_sub);
+        final TextView nom = convertView.findViewById(R.id.textview_tasques);
+        TextView durada = convertView.findViewById(R.id.textview_tasques_sub);
         // Populate the data into the template view using the data object
         nom.setText(data.getDades().getNom());
         durada.setText(String.format("%02dh %02dm %02ds",
                 data.getDades().getHores(), data.getDades().getMinuts(), data.getDades().getSegons()));
 
         final Button button = convertView.findViewById(R.id.buttonStart);
-        final ImageView imageView = convertView.findViewById(R.id.imageView);
+        final ImageView icon = convertView.findViewById(R.id.imageView);
 
         if (data.getDades().isProjecte()) {
             button.setVisibility(View.INVISIBLE);
@@ -49,17 +49,17 @@ public class ActivitatAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
         }
 
         if (data.getDades().isProjecte()) {
-            imageView.setImageResource(R.drawable.projecte);
+            icon.setImageResource(R.drawable.projecte);
         } else {
-            imageView.setImageResource(R.drawable.tasca);
+            icon.setImageResource(R.drawable.tasca);
         }
 
         if (data.getDades().isCronometreEngegat()) {
             nom.setTextColor(Color.RED);
-            button.setText("Stop");
+            button.setText(R.string.tasca_stop_button);
         } else {
             nom.setTextColor(Color.BLACK);
-            button.setText("Start");
+            button.setText(R.string.tasca_start_button);
         }
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -70,12 +70,12 @@ public class ActivitatAdapter extends ArrayAdapter<PackDadesActivitatPosition> {
                     intent = new Intent(
                             LlistaActivitatsActivity.ENGEGA_CRONOMETRE);
                     nom.setTextColor(Color.RED);
-                    button.setText("Stop");
+                    button.setText(R.string.tasca_stop_button);
                 } else {
                     intent = new Intent(
                             LlistaActivitatsActivity.PARA_CRONOMETRE);
                     nom.setTextColor(Color.BLACK);
-                    button.setText("Start");
+                    button.setText(R.string.tasca_start_button);
                 }
                 intent.putExtra("posicio", data.getPos());
                 getContext().sendBroadcast(intent);

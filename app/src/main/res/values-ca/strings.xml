@@ -1,13 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">TimeTracker</string>
-    <string name="tasca_start_button">Start</string>
-    <string name="tasca_stop_button">Stop</string>
+    <string name="tasca_start_button">Començar</string>
     <string name="formulari_nom_activitat">Nom:</string>
     <string name="formulari_nom_activitat_hint">Nom de l\'activitat&#8230;</string>
     <string name="formulari_tipus_dactivitat">Tipus d\'activitat:</string>
     <string name="formulari_descripcio">Descripció:</string>
     <string name="formulari_descripcio_hint">Descripció de l\'activitat&#8230;</string>
-    // &#8230; = ...
     <string name="formulari_boto_crear">Crear</string>
     <string name="formulari_opcio_projecte">Projecte</string>
     <string name="formulari_opcio_tasca">Tasca</string>
@@ -45,9 +43,6 @@
     <string name="durada">Durada:</string>
     <string name="detalls_data_inici">Data inici:</string>
     <string name="datalls_data_fi">Data fi:</string>
+    <string name="tasca_stop_button">Parar</string>
     <string name="title_options_language">Escull l\'idioma</string>
-    <string name="option_language_ca" translatable="false">Català</string>
-    <string name="option_language_es" translatable="false">Español</string>
-    <string name="option_language_en" translatable="false">English</string>
-    <string name="option_language_zh" translatable="false">中文</string>
 </resources>
