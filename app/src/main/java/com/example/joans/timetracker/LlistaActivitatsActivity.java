@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
@@ -16,6 +18,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 import java.util.Collections;
+
+import nucli.Activitat;
+import nucli.Projecte;
+import nucli.Tasca;
 
 
 /**
@@ -74,8 +80,11 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      * <code>TextView</code> per a cada activitat a mostrar.
      */
     private ListView listViewActivities;
+    private Projecte pare_actual;
+    private boolean tasques_pausades = false;
+    private boolean hi_ha_tasques_cronomentrant = false;
 
-    private FloatingActionButton fab;
+    private ArrayList<Tasca> tasquesEngegades;
 
     /**
      * Adaptador necessari per connectar les dades de la llista de projectes i
@@ -153,12 +162,13 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
                 ArrayList<DadesActivitat> llistaDadesAct =
                         (ArrayList<DadesActivitat>) intent
                                 .getSerializableExtra("llista_dades_activitats");
-                String nom_pare = intent.getStringExtra("nom_pare");
+                pare_actual = (Projecte) intent.getSerializableExtra("pare");
                 if (activitatPareActualEsArrel) {
                     setTitle("Time Tracker");
                 } else {
-                    setTitle(nom_pare);
+                    setTitle(pare_actual.getNom());
                 }
+
 
                 aaAct.clear();
 
@@ -230,6 +240,8 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
 
                 sendBroadcast(inte);
 
+            } else if (intent.getAction().equals(LlistaActivitatsActivity.DEMANAR_PARA_SERVEI)) {
+                paraServei();
             } else {
                 // no pot ser
                 assert false : "intent d'acció no prevista";
@@ -301,6 +313,12 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
 
     public static final String EDITAR_ACTIVITAT = "Editar_activitat";
 
+    public static final String DEMANAR_PARA_SERVEI = "Demana_para_servei";
+
+    public static final String PAUSAR_TASQUES = "Pausar_tasques";
+
+    public static final String RESTAURAR_TASQUES = "Restaurar_tasques";
+
     /**
      * En voler pujar de nivell quan ja som a dalt de tot vol dir que l'usuari
      * desitja "deixar de treballar del tot" amb la aplicació, així que "parem"
@@ -330,6 +348,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
         filter.addAction(LlistaActivitatsActivity.DEMANAR_ELIMINAR_ACTIVITAT);
         filter.addAction(LlistaActivitatsActivity.DEMANAR_EDITAR_ACTIVITAT);
         filter.addAction(LlistaActivitatsActivity.ACTIVITAT_EDITAT);
+        filter.addAction(LlistaActivitatsActivity.DEMANAR_PARA_SERVEI);
         receptor = new Receptor();
         registerReceiver(receptor, filter);
 
@@ -381,11 +400,11 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_llista_activitats);
 
-        listViewActivities = (ListView) this.findViewById(R.id.listViewActivity);
+        listViewActivities = this.findViewById(R.id.listViewActivity);
 
-        fab = (FloatingActionButton) this.findViewById(R.id.addActivity);
+        FloatingActionButton fab_add_activity = this.findViewById(R.id.addActivity);
 
-        llistaDadesActivities = new ArrayList<PackDadesActivitatPosition>();
+        llistaDadesActivities = new ArrayList<>();
         aaAct = new ActivitatAdapter(this, llistaDadesActivities);
 
         listViewActivities.setAdapter(aaAct);
@@ -437,7 +456,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
             }
         });
 
-        fab.setOnClickListener(new View.OnClickListener() {
+        fab_add_activity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LlistaActivitatsActivity.this,
@@ -446,6 +465,12 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void paraServei() {
+        Log.d(tag, "parem servei");
+        sendBroadcast(new Intent(LlistaActivitatsActivity.PARA_SERVEI));
+        super.onBackPressed();
     }
 
     /**
@@ -460,10 +485,11 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
     public final void onBackPressed() {
         Log.i(tag, "onBackPressed");
         if (activitatPareActualEsArrel) {
-            // TODO: popup cosa
-            Log.d(tag, "parem servei");
-            sendBroadcast(new Intent(LlistaActivitatsActivity.PARA_SERVEI));
-            super.onBackPressed();
+            if (pare_actual.isAlgunaActivitatEngegada()) {
+                new ExitAppFragment().show(getFragmentManager(), "exit_app");
+            } else {
+                paraServei();
+            }
         } else {
             sendBroadcast(new Intent(LlistaActivitatsActivity.PUJA_NIVELL));
             Log.d(tag, "enviat intent PUJA_NIVELL");
@@ -498,7 +524,6 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      * @param savedInstanceState
      *            Bundle que de fet no es fa servir.
      *
-     * @see onConfigurationChanged
      */
     @Override
     public final void onRestoreInstanceState(final Bundle savedInstanceState) {
@@ -559,10 +584,43 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      */
     @Override
     public final void onConfigurationChanged(final Configuration newConfig) {
-        Log.i(tag, "onConfigurationChanged");
+        super.onConfigurationChanged(newConfig);
+        /*Log.i(tag, "onConfigurationChanged");
         if (Log.isLoggable(tag, Log.VERBOSE)) {
             Log.v(tag, newConfig.toString());
+        }*/
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.options_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.button_pause_resume:
+                if (tasques_pausades) {
+                    item.setIcon(R.drawable.pause);
+                    sendBroadcast(new Intent(LlistaActivitatsActivity.RESTAURAR_TASQUES));
+                } else {
+                    item.setIcon(R.drawable.play);
+                    sendBroadcast(new Intent(LlistaActivitatsActivity.PAUSAR_TASQUES));
+                }
+                tasques_pausades = !tasques_pausades;
+                break;
+            case R.id.button_generar_informe:
+                startActivity(new Intent(LlistaActivitatsActivity.this,
+                        GenerarInformeActivity.class));
+                sendBroadcast(new Intent(LlistaActivitatsActivity.DONAM_FILLS));
+                break;
+            case R.id.button_language:
+                break;
+            default:
+                assert false : "Botó no contemplat";
         }
+        return true;
     }
 
 }

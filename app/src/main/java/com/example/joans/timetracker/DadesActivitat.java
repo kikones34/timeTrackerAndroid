@@ -117,7 +117,7 @@ public class DadesActivitat implements Serializable {
         segons = (long) (durada - segonsPerHora * hores
                 - segonsPerMinut * minuts);
 
-        if (act.getClass().getName().endsWith("Projecte")) {
+        if (act instanceof Projecte) {
             isProjecte = true;
             isTasca = false;
             isCronometreEngegat = ((Projecte) act).isAlgunaActivitatEngegada();

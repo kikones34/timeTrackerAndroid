@@ -6,7 +6,8 @@
     <string name="formulari_tipus_dactivitat">Tipus d\'activitat:</string>
     <string name="formulari_seleccio_tipus_dactivitat">Selecciona el tipus d\'activitat:</string>
     <string name="formulari_descripcio">Descripció:</string>
-    <string name="formulari_descripcio_hint">Descripció de l\'activitat&#8230;</string> // &#8230; = ...
+    <string name="formulari_descripcio_hint">Descripció de l\'activitat&#8230;</string>
+    // &#8230; = ...
     <string name="formulari_boto_crear">Crear</string>
     <string name="formulari_opcio_projecte">Projecte</string>
     <string name="formulari_opcio_tasca">Tasca</string>
@@ -30,4 +31,21 @@
     <string name="title_nova_activitat">Afegir nova activitat</string>
     <string name="title_detalls_tasca">Detalls de la tasca</string>
     <string name="title_detalls_projecte">Detalls del projecte</string>
+    <string name="warning">Atenció!</string>
+    <string name="warning_exit_app">Hi ha tasques cronomentrant-se. Estàs segur que vols tancar l\'aplicació?</string>
+    <string name="opcio_simple">Simple</string>
+    <string name="opcio_detallat">Detallat</string>
+    <string name="data_inici">Data d\'inici:</string>
+    <string name="data_fi">Data final:</string>
+    <string name="format_informe">Format:</string>
+    <string name="generar_informe">Generar</string>
+    <string name="informe_generat">S\'ha generat l\'informe</string>
+    <string name="generar_informe_title">Generar informe</string>
+
+    <string-array name="formats_informe">
+        <item>Text pla</item>
+        <item>Web</item>
+        <item>PDF</item>
+    </string-array>
+
 </resources>

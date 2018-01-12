@@ -14,6 +14,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import nucli.Tasca;
+
 /**
  * Mostra la llista d'intervals d'alguna tasca. De cada interval mostra les
  * dates inicial i final en format dd-MM-aa hh:mm. Si la tasca està sent
@@ -144,8 +146,8 @@ public class LlistaIntervalsActivity extends AppCompatActivity {
                 }
                 aaAct.notifyDataSetChanged();
             }
-            String nom_pare = intent.getStringExtra("nom_pare");
-            setTitle(nom_pare);
+            Tasca pare = (Tasca) intent.getSerializableExtra("pare");
+            setTitle(pare.getNom());
             Log.i(tag, "final de onReceive LlistaIntervals");
         }
     }

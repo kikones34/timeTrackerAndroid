@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/button_pause_resume"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/pause"
+        />
+    <item
+        android:id="@+id/button_generar_informe"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/informe"
+        />
+    <item
+        android:id="@+id/button_language"
+        android:title=""
+        app:showAsAction="always"
+        android:icon="@drawable/world"
+        />
+</menu>

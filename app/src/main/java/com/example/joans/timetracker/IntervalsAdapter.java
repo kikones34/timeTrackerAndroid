@@ -32,8 +32,8 @@ public class IntervalsAdapter extends ArrayAdapter<DadesInterval> {
         TextView descripcio = (TextView) convertView.findViewById(R.id.textview_intervals);
         SimpleDateFormat formatter = new SimpleDateFormat();
         descripcio.setText(
-                "Data inici: " + formatter.format(di.getDataInicial()) + "\n"
-                + "Data final: " + formatter.format(di.getDataFinal()) + "\n"
+                "Desde: " + formatter.format(di.getDataInicial()) + "\n"
+                + "Fins a: " + formatter.format(di.getDataFinal()) + "\n"
                 + "Durada: " + di.getDuradaFormatted()
         );
 

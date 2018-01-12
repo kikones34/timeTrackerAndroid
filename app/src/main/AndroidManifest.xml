@@ -11,27 +11,19 @@
         <activity android:name=".LlistaActivitatsActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".LlistaIntervalsActivity">
-        </activity>
-
-        <activity
-            android:name=".FormulariCrearActivitatActivity">
-        </activity>
-
-        <activity
-            android:name=".MesDetallsActivity">
-        </activity>
+        <activity android:name=".LlistaIntervalsActivity"></activity>
+        <activity android:name=".FormulariCrearActivitatActivity"></activity>
+        <activity android:name=".MesDetallsActivity"></activity>
 
         <service
-            android:name="GestorArbreActivitats"
-            android:enabled="true" >
-        </service>
+            android:name=".GestorArbreActivitats"
+            android:enabled="true"></service>
 
+        <activity android:name=".GenerarInformeActivity"></activity>
     </application>
 
 </manifest>

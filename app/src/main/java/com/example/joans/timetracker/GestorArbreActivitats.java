@@ -164,7 +164,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
      * @see desaArbreActivitats
      */
     public final void carregaArbreActivitats(final int opcio) {
-        // TODO : Això fora millor fer-ho en un altre thread per evitar que la
+        // Això fora millor fer-ho en un altre thread per evitar que la
         // lectura d'un arxiu molt gran pugui trigui massa i provoqui que la
         // aplicació perdi responsiveness o pitjor, que aparegui el diàleg
         // ANR = application is not responding, demanant si volem forçar el
@@ -250,7 +250,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
      */
     // TODO : Això fora millor fer-ho en un altre thread per evitar que
     // l'escriptura d'un arxiu molt gran pugui trigui massa i provoqui que la
-    // aplicació perdi "responsiveness". veure el comentari ToDo de
+    // aplicació perdi "responsiveness". veure el comentari TO-DO de
     // carregaArbreActivitats.
     // TODO : si es demanés de desar l'arbre mentre alguna tasca s'estés
     // cronometrant, quedaria registrat així ? Seria un problema després,
@@ -314,6 +314,8 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         filter.addAction(LlistaActivitatsActivity.CREAR_ACTIVITAT);
         filter.addAction(LlistaActivitatsActivity.ELIMINAR_ACTIVITAT);
         filter.addAction(LlistaActivitatsActivity.EDITAR_ACTIVITAT);
+        filter.addAction(LlistaActivitatsActivity.PAUSAR_TASQUES);
+        filter.addAction(LlistaActivitatsActivity.RESTAURAR_TASQUES);
         receptor = new Receptor();
         registerReceiver(receptor, filter);
         actualitzadorIU = new Actualitzador(this, periodeRefrescIU,
@@ -321,7 +323,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         // Escollir la opció desitjada d'entre ferArbreGran, llegirArbreArxiu i
         // ferArbrePetitBuit. Podríem primer fer l'arbre gran i després, quan
         // ja s'hagi desat, escollir la opció de llegir d'arxiu.
-        final int opcio = llegirArbreArxiu; //ferArbreGran, llegirArbreArxiu, ferArbrePetit
+        final int opcio = ferArbreGran; //ferArbreGran, llegirArbreArxiu, ferArbrePetit
         carregaArbreActivitats(opcio);
         activitatPareActual = arrel;
 
@@ -414,6 +416,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
          */
         private final String tag = this.getClass().getCanonicalName();
 
+        private ArrayList<Tasca> tasquesPausades;
         /**
          * Per comptes de fer una classe receptora per a cada tipus d'accio o
          * intent, els tracto tots aquí mateix, distingit-los per la seva
@@ -518,6 +521,17 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
                 Activitat act = (Activitat) ((Projecte) activitatPareActual).getActivitats().toArray()[id];
                 act.setInfo(new Informacio(nom, descripcio));
                 enviaFills();
+            } else if (accio.equals(LlistaActivitatsActivity.PAUSAR_TASQUES)) {
+                tasquesPausades = (ArrayList<Tasca>) tasquesCronometrantse.clone();
+                paraCronometreDeTasques();
+            } else if (accio.equals(LlistaActivitatsActivity.RESTAURAR_TASQUES)) {
+                for (Tasca tasca : tasquesPausades) {
+                    if (!tasca.isCronometreEngegat()) {
+                        tasca.engegaCronometre(rellotge);
+                        tasquesCronometrantse.add(tasca);
+                    }
+                }
+                actualitzadorIU.engega();
             } else {
                 Log.d(tag, "accio desconeguda!");
             }
@@ -546,7 +560,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         Intent resposta = new Intent(GestorArbreActivitats.TE_FILLS);
         resposta.putExtra("activitat_pare_actual_es_arrel",
                 (activitatPareActual == arrel));
-        if (activitatPareActual.getClass().getName().endsWith("Projecte")) {
+        if (activitatPareActual instanceof Projecte) {
             ArrayList<DadesActivitat> llistaDadesAct =
                     new ArrayList<DadesActivitat>();
             for (Activitat act : ((Projecte) activitatPareActual)
@@ -563,7 +577,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
             }
             resposta.putExtra("llista_dades_intervals", llistaDadesInter);
         }
-        resposta.putExtra("nom_pare", activitatPareActual.getNom());
+        resposta.putExtra("pare", activitatPareActual);
         sendBroadcast(resposta);
         Log.d(tag, "enviat intent TE_FILLS d'activitat "
                 + activitatPareActual.getClass().getName());
@@ -622,6 +636,10 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
         for (Tasca t : tasquesCronometrantse) {
             t.paraCronometre(rellotge);
         }
+    }
+
+    public boolean isAlgunaActivitatEngegada() {
+        return arrel.isAlgunaActivitatEngegada();
     }
 
 }
