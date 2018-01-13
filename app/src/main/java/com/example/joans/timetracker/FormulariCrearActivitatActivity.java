@@ -3,11 +3,9 @@ package com.example.joans.timetracker;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -15,18 +13,10 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextClock;
-import android.widget.TextView;
-import android.widget.TimePicker;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.sql.Time;
-
 /**
- * Created by Jiacheny on 2018/1/10.
+ * eCreatd by Jiacheny on 2018/1/10.
  */
 
 public class FormulariCrearActivitatActivity extends AppCompatActivity {
@@ -77,9 +67,9 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
         cbAutoStart.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked) {
-                auto_start_decorator.setVisibility(buttonView.VISIBLE);
+                auto_start_decorator.setVisibility(View.VISIBLE);
             } else {
-                auto_start_decorator.setVisibility(buttonView.GONE);
+                auto_start_decorator.setVisibility(View.GONE);
             }
             }
         });
@@ -87,9 +77,9 @@ public class FormulariCrearActivitatActivity extends AppCompatActivity {
         cbAutoEnd.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
             if (isChecked) {
-                auto_end_decorator.setVisibility(buttonView.VISIBLE);
+                auto_end_decorator.setVisibility(View.VISIBLE);
             } else {
-                auto_end_decorator.setVisibility(buttonView.GONE);
+                auto_end_decorator.setVisibility(View.GONE);
             }
             }
         });

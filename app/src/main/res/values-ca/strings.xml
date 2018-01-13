@@ -41,8 +41,7 @@
     <string name="interval_data_inici">Des de:</string>
     <string name="interval_data_fi">Fins a:</string>
     <string name="durada">Durada:</string>
-    <string name="detalls_data_inici">Data inici:</string>
-    <string name="datalls_data_fi">Data fi:</string>
     <string name="tasca_stop_button">Parar</string>
     <string name="title_options_language">Escull l\'idioma</string>
+    <string name="tipus_informe">Tipus d\'informe</string>
 </resources>

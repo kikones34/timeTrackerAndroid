@@ -42,8 +42,6 @@
     <string name="interval_data_inici">Desde:</string>
     <string name="interval_data_fi">Hasta:</string>
     <string name="durada">Duración:</string>
-    <string name="detalls_data_inici">Fecha inicio:</string>
-    <string name="datalls_data_fi">Fecha fin:</string>
     <string name="tipus_informe">Tipo de informe:</string>
     <string name="title_options_language">Escoge un idioma</string>
 </resources>

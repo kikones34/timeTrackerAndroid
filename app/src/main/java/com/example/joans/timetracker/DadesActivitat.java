@@ -97,12 +97,12 @@ public class DadesActivitat implements Serializable {
      *            Tasca o projecte.
      */
     public DadesActivitat(final Activitat act) {
-        /**
+        /*
          * Factor de conversió
          */
         final long segonsPerHora = 3600;
 
-        /**
+        /*
          * Factor de conversió
          */
         final long segonsPerMinut = 60;

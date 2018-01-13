@@ -7,10 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-/**
- * Created by ARB on 10/01/2018.
- */
-
 public class ExitAppFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

@@ -1,8 +1,5 @@
 package com.example.joans.timetracker;
 
-/**
- * Created by Jiacheny on 2018/1/9.
- */
 
 public class PackDadesActivitatPosition {
     private DadesActivitat dades;

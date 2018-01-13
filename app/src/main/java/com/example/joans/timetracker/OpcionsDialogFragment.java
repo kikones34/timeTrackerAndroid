@@ -7,9 +7,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-/**
- * Created by Jiacheny on 2018/1/10.
- */
 
 public class OpcionsDialogFragment extends DialogFragment {
     @Override

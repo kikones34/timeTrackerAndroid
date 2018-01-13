@@ -8,12 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by Jiacheny on 2018/1/11.
- */
 
 public class IntervalsAdapter extends ArrayAdapter<DadesInterval> {
 
@@ -29,7 +24,7 @@ public class IntervalsAdapter extends ArrayAdapter<DadesInterval> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.listview_interval, parent, false);
         }
 
-        TextView descripcio = (TextView) convertView.findViewById(R.id.textview_intervals);
+        TextView descripcio = convertView.findViewById(R.id.textview_intervals);
         SimpleDateFormat formatter = new SimpleDateFormat();
         String interval_data_inici = convertView.getResources().getString(R.string.interval_data_inici);
         String interval_data_fi = convertView.getResources().getString(R.string.interval_data_fi);

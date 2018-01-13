@@ -42,8 +42,6 @@
     <string name="interval_data_inici">From:</string>
     <string name="interval_data_fi">To:</string>
     <string name="durada">Duration:</string>
-    <string name="detalls_data_inici">Start date:</string>
-    <string name="datalls_data_fi">End date:</string>
     <string name="tipus_informe">Report type:</string>
     <string name="title_options_language">Choose a language</string>
 </resources>

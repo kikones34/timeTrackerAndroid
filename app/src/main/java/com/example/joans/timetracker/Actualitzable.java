@@ -3,7 +3,7 @@ package com.example.joans.timetracker;
 /**
  * Interface que implementen aquelles classes que necessiten actualitzar
  * periòdicament el seu contingut mitjançant el mecanisme que proporciona un
- * objecte de classe {@link Actualitzador} derivada de {@link Handler}.
+ * objecte de classe {@link Actualitzador} derivada de {@link android.os.Handler}.
  * <p>
  * El que fa aquesta interface és exigir que les classes que la implementen
  * tinguin un mètode <code>actualitza</code>.

@@ -116,16 +116,16 @@ public class ArbreAleatori {
             final int nMaximActivitatsFilles, final int nMaximIntervalsFills,
             final double ratio, final Date dataInici, final Date dataFi,
             final long duradaMinimaInterval, final long duradaMaximaInterval) {
-        /**
+        /*
          * Arrel de l'arbre creat que retornem com a resultat.
          */
         Projecte arrel;
 
-        /**
+        /*
          * Llista d'activitats del nivell superior a l'actual, en generar
          * l'arbre.
          */
-        ArrayList<Activitat> llistaActivitatsPare = new ArrayList<Activitat>();
+        ArrayList<Activitat> llistaActivitatsPare = new ArrayList<>();
 
         rd = new RandomDate(dataInici, dataFi);
 

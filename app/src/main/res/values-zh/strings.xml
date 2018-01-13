@@ -18,7 +18,7 @@
     <string name="array_opcions_dialog_el">删除</string>
     <string name="edit_dialog">编辑活动</string>
     <string name="OK">接受</string>
-    <string name="nom_buit">名字空的(干哈呢)</string>
+    <string name="nom_buit">名字空的</string>
     <string name="descripcio_buida">简介空的(找抽呢)</string>
     <string name="auto_start_desc">任务将在每天这个时间开始</string>
     <string name="auto_end_desc">任务将在每天这个时间停止</string>
@@ -26,14 +26,14 @@
     <string name="title_detalls_tasca">任务的简介</string>
     <string name="title_detalls_projecte">活动的简介</string>
     <string name="warning">注意!</string>
-    <string name="warning_exit_app">お前はもう死んでいる</string> //还有活动正在计时，确定关闭程序吗?
+    <string name="warning_exit_app">还有活动正在计时，确定关闭程序吗?</string>
     <string name="opcio_simple">简洁的</string>
     <string name="opcio_detallat">详细的</string>
     <string name="data_inici">开始日期:</string>
     <string name="data_fi">结束日期:</string>
     <string name="format_informe">格式:</string>
     <string name="generar_informe">生成</string>
-    <string name="informe_generat">报告生成成功(假的，花Q)</string>
+    <string name="informe_generat">报告生成成功</string>
     <string name="generar_informe_title">生成报告</string>
     <string name="format_text_pla">文字</string>
     <string name="format_web">网页</string>
@@ -41,9 +41,7 @@
     <string name="interval_data_inici">从:</string>
     <string name="interval_data_fi">到:</string>
     <string name="durada">持续时间:</string>
-    <string name="detalls_data_inici">开始日期:</string>
-    <string name="datalls_data_fi">结束日期:</string>
     <string name="tasca_stop_button">停止</string>
     <string name="tipus_informe">报告类型:</string>
-    <string name="title_options_language">选择语言(瞅啥呢)</string>
+    <string name="title_options_language">选择语言</string>
 </resources>

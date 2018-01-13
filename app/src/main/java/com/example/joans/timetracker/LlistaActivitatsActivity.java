@@ -1,6 +1,5 @@
 package com.example.joans.timetracker;
 
-import android.app.DialogFragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -78,7 +77,6 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      * Grup de vistes (controls de la interfase gràfica) que consisteix en un
      * <code>TextView</code> per a cada activitat a mostrar.
      */
-    private ListView listViewActivities;
     private Projecte pare_actual;
     private boolean tasques_pausades = false;
     private boolean hi_ha_tasques_cronomentrant = false;
@@ -100,16 +98,6 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
      * actualment, filles del (sub)projecte on estem posicionats actualment.
      */
     private ArrayList<PackDadesActivitatPosition> llistaDadesActivities;
-
-    /**
-     * Identificador del View les propietats del qual (establertes amb l'editor
-     * XML de la interfase gràfica) estableixen com es mostra cada un els items
-     * o elements de la llista d'activitats (tasques i projectes) referenciada
-     * per l'adaptador {@link #aaProj}. Si per comptes haguéssim posat
-     * <code>android.R.layout.simple_list_item_1</code> llavors fora la
-     * visualització per defecte d'un text. Ara la diferència es la mida de la
-     * tipografia.
-     */
 
     /**
      * Flag que ens servirà per decidir fer que si premem el botó/tecla "back"
@@ -143,6 +131,7 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
          *
          * @param context
          * @param intent
+         *
          * objecte Intent que arriba per "broadcast" i del qual en fem
          * servir l'atribut "action" per saber quina mena de intent és
          * i els extres per obtenir les dades a mostrar i si el projecte
@@ -399,9 +388,9 @@ public class LlistaActivitatsActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_llista_activitats);
 
-        listViewActivities = this.findViewById(R.id.listViewActivity);
+        ListView listViewActivities = findViewById(R.id.listViewActivity);
 
-        FloatingActionButton fab_add_activity = this.findViewById(R.id.addActivity);
+        FloatingActionButton fab_add_activity = findViewById(R.id.addActivity);
 
         llistaDadesActivities = new ArrayList<>();
         aaAct = new ActivitatAdapter(this, llistaDadesActivities);

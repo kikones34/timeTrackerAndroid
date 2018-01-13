@@ -74,12 +74,12 @@ public class DadesInterval implements Serializable {
         String strdi = sdf.format(dataInicial);
         String strdf = sdf.format(dataFinal);
 
-        /**
+        /*
          * Factor de conversió
          */
         final long segonsPerHora = 3600;
 
-        /**
+        /*
          * Factor de conversió
          */
         final long segonsPerMinut = 60;
@@ -121,12 +121,12 @@ public class DadesInterval implements Serializable {
     }
 
     public final String getDuradaFormatted() {
-        /**
+        /*
          * Factor de conversió
          */
         final long segonsPerHora = 3600;
 
-        /**
+        /*
          * Factor de conversió
          */
         final long segonsPerMinut = 60;

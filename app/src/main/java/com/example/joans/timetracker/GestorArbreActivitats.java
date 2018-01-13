@@ -17,8 +17,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StreamCorruptedException;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 
 import nucli.Activitat;
@@ -94,19 +92,19 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
     public static final String TE_FILLS = "Te_fills";
 
     /**
-     * Usada a {@link onCreate} i {@link carregaArbreActivitats} per crear un o
+     * Usada a {@link #onCreate} i {@link #carregaArbreActivitats} per crear un o
      * altre tipus d'arbre de projectes, tasques i intervals.
      */
     private final int llegirArbreArxiu = 0;
 
     /**
-     * Usada a {@link onCreate} i {@link carregaArbreActivitats} per crear un o
+     * Usada a {@link #onCreate} i {@link #carregaArbreActivitats} per crear un o
      * altre tipus d'arbre de projectes, tasques i intervals.
      */
     private final int ferArbrePetitBuit = 1;
 
     /**
-     * Usada a {@link onCreate} i {@link carregaArbreActivitats} per crear un o
+     * Usada a {@link #onCreate} i {@link #carregaArbreActivitats} per crear un o
      * altre tipus d'arbre de projectes, tasques i intervals.
      */
     private final int ferArbreGran = 2;
@@ -134,7 +132,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
      * i fer que no es desin com si ho fossin i llavors tenir dades
      * inconsistents en tornar a carregar l'arbre.
      */
-    private ArrayList<Tasca> tasquesCronometrantse = new ArrayList<Tasca>();
+    private ArrayList<Tasca> tasquesCronometrantse = new ArrayList<>();
 
     /**
      * Període de temps en segons dada quan s'actualitza la interfase d'usuari.
@@ -161,7 +159,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
      *            arbre, però.</li>
      *            </ol>
      *
-     * @see desaArbreActivitats
+     * @see #desaArbreActivitats()
      */
     public final void carregaArbreActivitats(final int opcio) {
         // Això fora millor fer-ho en un altre thread per evitar que la
@@ -293,7 +291,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
      * <ul>
      * <li>estableix els tipus d'intents als quals dona resposta (veure
      * {@link Receptor})</li>
-     * <li>crea el "handler" {@link actualitzadorIU} que actualitzarà la
+     * <li>crea el "handler" {@link #actualitzadorIU} que actualitzarà la
      * interfase d'usuari a mesura que vagi passant el temps</li>
      * <li>crea i posa en marxa el rellotge per cronometrar tasques</li>
      * </ul>
@@ -401,7 +399,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
      * fa <code>paraServei</code>, que a més a més, fa un <code>stopSelf</code>
      * d'aquest servei.
      * </ul>
-     * I de {@link LlistaintervalsActivity} rebem <code>PUJA_NIVELL</code> i
+     * I de {@link #LlistaintervalsActivity} rebem <code>PUJA_NIVELL</code> i
      * <code>DONAM_FILLS</code> que tenen el mateix tractament.
      *
      * @author joans
@@ -562,7 +560,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
                 (activitatPareActual == arrel));
         if (activitatPareActual instanceof Projecte) {
             ArrayList<DadesActivitat> llistaDadesAct =
-                    new ArrayList<DadesActivitat>();
+                    new ArrayList<>();
             for (Activitat act : ((Projecte) activitatPareActual)
                     .getActivitats()) {
                 llistaDadesAct.add(new DadesActivitat(act));
@@ -570,7 +568,7 @@ public class GestorArbreActivitats extends Service implements Actualitzable {
             resposta.putExtra("llista_dades_activitats", llistaDadesAct);
         } else { // es tasca
             ArrayList<DadesInterval> llistaDadesInter =
-                    new ArrayList<DadesInterval>();
+                    new ArrayList<>();
             for (Interval inter : ((Tasca) activitatPareActual)
                     .getIntervals()) {
                 llistaDadesInter.add(new DadesInterval(inter));

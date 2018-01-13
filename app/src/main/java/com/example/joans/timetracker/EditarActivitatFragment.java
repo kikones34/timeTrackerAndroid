@@ -11,12 +11,6 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-/**
- * Created by Jiacheny on 2018/1/11.
- */
-
 public class EditarActivitatFragment extends DialogFragment {
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {

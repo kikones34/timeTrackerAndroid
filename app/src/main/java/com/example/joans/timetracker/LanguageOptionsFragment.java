@@ -4,15 +4,10 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 
 import java.util.Locale;
-
-/**
- * Created by ARB on 12/01/2018.
- */
 
 public class LanguageOptionsFragment extends DialogFragment {
 

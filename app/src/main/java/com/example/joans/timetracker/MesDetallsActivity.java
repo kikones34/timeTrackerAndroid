@@ -6,9 +6,6 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
-/**
- * Created by Jiacheny on 2018/1/11.
- */
 
 public class MesDetallsActivity extends AppCompatActivity {
     @Override
@@ -29,11 +26,11 @@ public class MesDetallsActivity extends AppCompatActivity {
             setTitle(R.string.title_detalls_tasca);
         }
 
-        TextView nom = (TextView) findViewById(R.id.mes_detalls_nom);
-        TextView descripcio = (TextView) findViewById(R.id.mes_detalls_descripcio);
-        TextView data_inici = (TextView) findViewById(R.id.mes_detalls_data_inici);
-        TextView data_fi = (TextView) findViewById(R.id.mes_detalls_data_fi);
-        TextView durada = (TextView) findViewById(R.id.mes_detalls_durada);
+        TextView nom = findViewById(R.id.mes_detalls_nom);
+        TextView descripcio = findViewById(R.id.mes_detalls_descripcio);
+        TextView data_inici = findViewById(R.id.mes_detalls_data_inici);
+        TextView data_fi = findViewById(R.id.mes_detalls_data_fi);
+        TextView durada = findViewById(R.id.mes_detalls_durada);
 
         nom.setText(da.getNom());
         descripcio.setText(da.getDescripcio());

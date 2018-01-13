@@ -59,7 +59,7 @@ public class Projecte extends Activitat {
 
     public Projecte(String nom, String descr, Projecte projPare){
         super(nom,descr,projPare);
-        activitats = new ArrayList<Activitat>();
+        activitats = new ArrayList<>();
     }
 
     public boolean isAlgunaActivitatEngegada() {

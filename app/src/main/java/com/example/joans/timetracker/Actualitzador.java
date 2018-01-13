@@ -13,7 +13,7 @@ import android.util.Log;
  * <em>Updating the UI from a Timer</em> que es troba a la documentació oficial
  * d'Android Resources -> Articles,
  * <p>
- * {@link http://developer.android.com/resources/articles/timed-ui-updates.html}
+ * <a href="http://developer.android.com/resources/articles/timed-ui-updates.html">http://developer.android.com/resources/articles/timed-ui-updates.html</a>
  * <p>
  * Una extensió al respecte és la possibilitat de parar i engegar la crida
  * periòdica al mètode <code>actualitza</code>.
@@ -90,7 +90,7 @@ public class Actualitzador extends Handler {
     }
 
     /**
-     * Inicia el cicle d'actualitzacions al cap de {@link #delayMilis}
+     * Inicia el cicle d'actualitzacions al cap de {@link #delayMillis}
      * milisegons i amb aquest període.
      */
     public final void engega() {
@@ -138,4 +138,4 @@ public class Actualitzador extends Handler {
         }
     }
 
-};
+}

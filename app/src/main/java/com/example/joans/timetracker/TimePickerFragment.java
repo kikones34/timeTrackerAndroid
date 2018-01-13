@@ -6,14 +6,10 @@ import android.app.TimePickerDialog;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.TimePicker;
 
 import java.util.Calendar;
 
-/**
- * Created by Jiacheny on 2018/1/10.
- */
 
 public class TimePickerFragment extends DialogFragment implements TimePickerDialog.OnTimeSetListener{
 

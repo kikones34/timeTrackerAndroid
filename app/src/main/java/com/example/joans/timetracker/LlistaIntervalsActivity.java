@@ -8,7 +8,6 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -82,9 +81,9 @@ public class LlistaIntervalsActivity extends AppCompatActivity {
         // Tot aquest mecanisme és anàleg al que trobem al onCreate
         // de LlistaActivitatsActivity.
         setContentView(R.layout.activity_llista_intervals);
-        intervalsListView = (ListView) this.findViewById(R.id.listViewIntervals);
+        intervalsListView = this.findViewById(R.id.listViewIntervals);
 
-        llistaDadesIntervals = new ArrayList<DadesInterval>();
+        llistaDadesIntervals = new ArrayList<>();
         aaAct = new IntervalsAdapter(this, llistaDadesIntervals);
         intervalsListView.setAdapter(aaAct);
     }
